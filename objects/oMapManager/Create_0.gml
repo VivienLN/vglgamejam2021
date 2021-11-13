@@ -77,6 +77,8 @@ function init() {
 	
 	// Create a new map part at random
 	activateRandomMapPart();
+	// And move it to the left immediately (this will also create a new piece on the right)
+	moveAllMapParts(-room_width);
 }
 
 function activateRandomMapPart() {
