@@ -1,6 +1,8 @@
 {
   "resources": [
+    {"id":{"name":"sCameraTarget","path":"sprites/sCameraTarget/sCameraTarget.yy",},"order":38,},
     {"id":{"name":"oRailMedium","path":"objects/oRailMedium/oRailMedium.yy",},"order":0,},
+    {"id":{"name":"oCameraTarget","path":"objects/oCameraTarget/oCameraTarget.yy",},"order":20,},
     {"id":{"name":"sMapManager","path":"sprites/sMapManager/sMapManager.yy",},"order":34,},
     {"id":{"name":"sMapPartGroup","path":"sprites/sMapPartGroup/sMapPartGroup.yy",},"order":11,},
     {"id":{"name":"oCrate","path":"objects/oCrate/oCrate.yy",},"order":1,},
