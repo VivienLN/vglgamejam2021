@@ -22,6 +22,11 @@ global.MAP_PARTS = [
 	"Map20"
 ];
 
+global.AVAILABLE_MAP_PARTS = [
+	"Map19",
+	"Map20"
+];
+
 #region methods
 function init() {
 	// For RNG to be... random ¯\_(ツ)_/¯
@@ -67,7 +72,7 @@ function activateRandomMapPart() {
 		layerBaseName = FORCE_MAP_PART;
 	} else {
 		do {
-			layerBaseName = global.MAP_PARTS[irandom(array_length_1d(global.MAP_PARTS)-1)];
+			layerBaseName = global.AVAILABLE_MAP_PARTS[irandom(array_length_1d(global.AVAILABLE_MAP_PARTS)-1)];
 		} until(ds_list_find_index(activeMapParts, layerBaseName) == -1);
 	}
 	
