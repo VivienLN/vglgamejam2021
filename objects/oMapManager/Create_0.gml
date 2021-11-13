@@ -40,6 +40,7 @@ function init() {
 	activeMapParts = ds_list_create();
 	toDeleteMapPart = noone;
 	mustCreateNewPart = false;
+	newPartX = room_width;
 	lastPartEndY = room_height / 2;
 
 	// Set instances origin X (position according to layer)
@@ -95,7 +96,7 @@ function activateMapPart(layerBaseName) {
 	var instancesLayer = layer_get_id(layerBaseName + "Instances");
 	var instances = layer_get_all_elements(instancesLayer);
 	var mapPartY = 0;
-	var mapPartX = room_width;
+	var mapPartX = newPartX;
 	
 	// Get map start marker to align with previous map end
 	// And offset the y of everything
@@ -124,7 +125,7 @@ function activateMapPart(layerBaseName) {
 	var showBirds = (irandom(100) < FX_BIRDS_CHANCE);
 	for(var i = 0; i < array_length_1d(instances); i++) {
 		with(layer_instance_get_instance(instances[i])) {
-			x = originX + room_width;
+			x = originX + mapPartX;
 			y = originY + mapPartY;
 			if(object_index == oMapPartEndMarker) {
 				other.lastPartEndY = y;
@@ -195,6 +196,7 @@ function moveMapPart(layerBaseName, offsetX) {
 	// When a map part reach 0, create a new one
 	if(layer_get_x(bgLayer) <= 0 && layer_get_x(bgLayer) > offsetX) {
 		mustCreateNewPart = true;
+		newPartX = room_width + floor(layer_get_x(bgLayer));
 	}
 	
 	// When a part reach -room_width (its out of screen), flag for deletion
