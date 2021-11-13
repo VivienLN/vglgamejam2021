@@ -10,7 +10,7 @@
 #macro GAME_OVER_ENABLED true 
 // Force a map part to appear 1/2 time 
 // (because we cant display the same part twice at the same time)
-#macro FORCE_MAP_PART "Map20"
+#macro FORCE_MAP_PART "Map21"
 
 
 // Variables

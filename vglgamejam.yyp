@@ -62,7 +62,7 @@
     {"id":{"name":"sTilesCity","path":"sprites/sTilesCity/sTilesCity.yy",},"order":10,},
     {"id":{"name":"oBillboardRail","path":"objects/oBillboardRail/oBillboardRail.yy",},"order":3,},
     {"id":{"name":"fDefault","path":"fonts/fDefault/fDefault.yy",},"order":0,},
-    {"id":{"name":"Sky","path":"rooms/Sky/Sky.yy",},"order":2,},
+    {"id":{"name":"Game","path":"rooms/Game/Game.yy",},"order":2,},
     {"id":{"name":"sTuto","path":"sprites/sTuto/sTuto.yy",},"order":20,},
     {"id":{"name":"sSky","path":"sprites/sSky/sSky.yy",},"order":13,},
     {"id":{"name":"oBench","path":"objects/oBench/oBench.yy",},"order":1,},
@@ -90,7 +90,7 @@
     "children": [],
   },
   "RoomOrderNodes": [
-    {"roomId":{"name":"Sky","path":"rooms/Sky/Sky.yy",},},
+    {"roomId":{"name":"Game","path":"rooms/Game/Game.yy",},},
     {"roomId":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"roomId":{"name":"TestRoom","path":"rooms/TestRoom/TestRoom.yy",},},
   ],

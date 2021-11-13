@@ -89,6 +89,13 @@ if(isGrinding) {
 		// Now we can update "isOnGround"
 		isOnGround = true;
 	}
+	
+	// Collision with Ground object
+	while(place_meeting(x, newY, oMapGroundGroup)) {
+		newY--;
+		// Now we can update "isOnGround"
+		isOnGround = true;
+	}	
 }
 
 // JustLanded is always false if we were on the ground in the last frame
