@@ -15,7 +15,7 @@ maxGrindRecoveryFrames = 8;
 
 glidingYSpeed = 1.2;
 glidingYSpeedVariation = 1;
-maxJumpFrames = 13; //12;
+maxJumpFrames = 13; //13;
 
 
 // Other variables

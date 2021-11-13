@@ -19,12 +19,16 @@ global.MAP_PARTS = [
 	"Map17",
 	"Map18",
 	"Map19",
-	"Map20"
+	"Map20",
+	"Map21",
+	"MapDown01",
+	"MapUp01"
 ];
 
 global.AVAILABLE_MAP_PARTS = [
-	"Map19",
-	"Map20"
+	"Map21",
+	"MapDown01",
+	"MapUp01"
 ];
 
 #region methods
@@ -36,11 +40,11 @@ function init() {
 	activeMapParts = ds_list_create();
 	toDeleteMapPart = noone;
 	mustCreateNewPart = false;
+	lastPartEndY = room_height / 2;
 
-	// Set instances origin X
+	// Set instances origin X (position according to layer)
 	// (didnt find another way to move a group...)
 	with(oMapObstaclesGroup) {
-		// x position on the layer
 		originX = x;
 		originY = y;
 	}
@@ -56,6 +60,14 @@ function init() {
 	 	originX = x;
 		originY = y;
 	}
+	with(oMapPartStartMarker) {
+	 	originX = x;
+		originY = y;
+	}
+	with(oMapPartEndMarker) {
+	 	originX = x;
+		originY = y;
+	}
 
 	// Disable all map parts at startup
 	for(var i = 0; i < array_length_1d(global.MAP_PARTS); i++) {
@@ -68,28 +80,40 @@ function init() {
 
 function activateRandomMapPart() {
 	var layerBaseName = noone;
-	if(FORCE_MAP_PART != noone && ds_list_find_index(activeMapParts, FORCE_MAP_PART) == -1) {
-		layerBaseName = FORCE_MAP_PART;
-	} else {
-		do {
-			layerBaseName = global.AVAILABLE_MAP_PARTS[irandom(array_length_1d(global.AVAILABLE_MAP_PARTS)-1)];
-		} until(ds_list_find_index(activeMapParts, layerBaseName) == -1);
-	}
-	
-	
+	do {
+		layerBaseName = global.AVAILABLE_MAP_PARTS[irandom(array_length_1d(global.AVAILABLE_MAP_PARTS)-1)];
+	} until(ds_list_find_index(activeMapParts, layerBaseName) == -1);
 	
 	activateMapPart(layerBaseName);
 }
 
 
 function activateMapPart(layerBaseName) {
-	bgLayer = layer_get_id(layerBaseName + "Bg");
-	mdLayer = layer_get_id(layerBaseName + "Md");
-	fgLayer = layer_get_id(layerBaseName + "Fg");
-	instancesLayer = layer_get_id(layerBaseName + "Instances");
-	layer_x(bgLayer, room_width);
-	layer_x(mdLayer, room_width);
-	layer_x(fgLayer, room_width);
+	var bgLayer = layer_get_id(layerBaseName + "Bg");
+	var mdLayer = layer_get_id(layerBaseName + "Md");
+	var fgLayer = layer_get_id(layerBaseName + "Fg");
+	var instancesLayer = layer_get_id(layerBaseName + "Instances");
+	var instances = layer_get_all_elements(instancesLayer);
+	var mapPartY = 0;
+	var mapPartX = room_width;
+	
+	// Get map start marker to align with previous map end
+	// And offset the y of everything
+	for(var i = 0; i < array_length_1d(instances); i++) {
+		instance = layer_instance_get_instance(instances[i]);
+		
+		if(instance.object_index == oMapPartStartMarker) {
+			mapPartY = lastPartEndY - instance.originY;
+		}
+	}
+	
+	// Move layers
+	layer_x(bgLayer, mapPartX);
+	layer_x(mdLayer, mapPartX);
+	layer_x(fgLayer, mapPartX);
+	layer_y(bgLayer, mapPartY);
+	layer_y(mdLayer, mapPartY);
+	layer_y(fgLayer, mapPartY);
 	layer_set_visible(bgLayer, true);
 	layer_set_visible(mdLayer, true);
 	layer_set_visible(fgLayer, true);
@@ -97,11 +121,17 @@ function activateMapPart(layerBaseName) {
 	instance_activate_layer(instancesLayer);
 	
 	// Instances
-	instances = layer_get_all_elements(instancesLayer);
 	var showBirds = (irandom(100) < FX_BIRDS_CHANCE);
 	for(var i = 0; i < array_length_1d(instances); i++) {
 		instance = layer_instance_get_instance(instances[i]);
 		instance.x = instance.originX + room_width;
+		instance.y = instance.originY + mapPartY;
+		
+		// Register Y of ending piece
+		if(instance.object_index == oMapPartEndMarker) {
+			lastPartEndY = instance.y;
+		}
+		
 		// Randomly activate birds for this map part
 		if(instance.object_index == oBird) {
 			instance.visible = showBirds;
@@ -114,10 +144,10 @@ function activateMapPart(layerBaseName) {
 
 function deactivateMapPart(layerBaseName) {
 	// show_debug_message("deactivate: " + layerBaseName);
-	bgLayer = layer_get_id(layerBaseName + "Bg");
-	mdLayer = layer_get_id(layerBaseName + "Md");
-	fgLayer = layer_get_id(layerBaseName + "Fg");
-	instancesLayer = layer_get_id(layerBaseName + "Instances");
+	var bgLayer = layer_get_id(layerBaseName + "Bg");
+	var mdLayer = layer_get_id(layerBaseName + "Md");
+	var fgLayer = layer_get_id(layerBaseName + "Fg");
+	var instancesLayer = layer_get_id(layerBaseName + "Instances");
 	instance_deactivate_layer(instancesLayer);
 	layer_set_visible(bgLayer, false);
 	layer_set_visible(mdLayer, false);
@@ -149,17 +179,16 @@ function moveAllMapParts(offsetX) {
 }
 
 function moveMapPart(layerBaseName, offsetX) {
-	// show_debug_message("move map part: " + layerBaseName );
-	bgLayer = layer_get_id(layerBaseName + "Bg");
-	mdLayer = layer_get_id(layerBaseName + "Md");
-	fgLayer = layer_get_id(layerBaseName + "Fg");
-	instancesLayer = layer_get_id(layerBaseName + "Instances");
+	var bgLayer = layer_get_id(layerBaseName + "Bg");
+	var mdLayer = layer_get_id(layerBaseName + "Md");
+	var fgLayer = layer_get_id(layerBaseName + "Fg");
+	var instancesLayer = layer_get_id(layerBaseName + "Instances");
 	layer_x(bgLayer, layer_get_x(bgLayer) + offsetX);
 	layer_x(mdLayer, layer_get_x(mdLayer) + offsetX);
 	layer_x(fgLayer, layer_get_x(fgLayer) + offsetX);
 	
 	// Move instances	
-	instances = layer_get_all_elements(instancesLayer);
+	var instances = layer_get_all_elements(instancesLayer);
 	for(var i = 0; i < array_length_1d(instances); i++) {
 		layer_instance_get_instance(instances[i]).x += offsetX;
 	}

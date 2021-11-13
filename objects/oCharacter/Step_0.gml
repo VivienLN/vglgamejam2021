@@ -81,15 +81,9 @@ if(isGrinding) {
 	ySpeed = isGliding ? glidingYSpeed + random_range(-glidingYSpeedVariation, glidingYSpeedVariation) : min(ySpeed + grav, maxYspeed);
 	var newY = y + (ySpeed);
 
-	// collision with block
+	// collision with ground
 	lastIsOnGround = isOnGround;
 	isOnGround = false;
-	while(place_meeting(x, newY, oBlock)) {
-		newY--;
-		// Now we can update "isOnGround"
-		isOnGround = true;
-	}
-	
 	// Collision with Ground object
 	while(place_meeting(x, newY, oMapGroundGroup)) {
 		newY--;
