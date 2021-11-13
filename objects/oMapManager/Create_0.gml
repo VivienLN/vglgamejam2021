@@ -123,18 +123,17 @@ function activateMapPart(layerBaseName) {
 	// Instances
 	var showBirds = (irandom(100) < FX_BIRDS_CHANCE);
 	for(var i = 0; i < array_length_1d(instances); i++) {
-		instance = layer_instance_get_instance(instances[i]);
-		instance.x = instance.originX + room_width;
-		instance.y = instance.originY + mapPartY;
-		
-		// Register Y of ending piece
-		if(instance.object_index == oMapPartEndMarker) {
-			lastPartEndY = instance.y;
-		}
-		
-		// Randomly activate birds for this map part
-		if(instance.object_index == oBird) {
-			instance.visible = showBirds;
+		with(layer_instance_get_instance(instances[i])) {
+			x = originX + room_width;
+			y = originY + mapPartY;
+			if(object_index == oMapPartEndMarker) {
+				other.lastPartEndY = y;
+			}
+			// Randomly activate birds for this map part
+			if(object_index == oBird) {
+				visible = showBirds;
+			}
+			
 		}
 	}
 	
