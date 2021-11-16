@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 1023,
-  "bbox_top": 404,
-  "bbox_bottom": 575,
+  "bbox_right": 31,
+  "bbox_top": 0,
+  "bbox_bottom": 31,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 1024,
-  "height": 576,
+  "width": 32,
+  "height": 32,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"f454a078-5f3f-49af-92c1-1867b01fff18","path":"sprites/sParallax04/sParallax04.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"f454a078-5f3f-49af-92c1-1867b01fff18","path":"sprites/sParallax04/sParallax04.yy",},"LayerId":{"name":"8acc2933-3c5a-4862-af62-898608db4a81","path":"sprites/sParallax04/sParallax04.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sParallax04","path":"sprites/sParallax04/sParallax04.yy",},"resourceVersion":"1.0","name":"f454a078-5f3f-49af-92c1-1867b01fff18","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"ef190d11-a84e-4157-ac21-386fe698b8cc","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"ef190d11-a84e-4157-ac21-386fe698b8cc","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},"LayerId":{"name":"9d28b985-985e-42aa-8bbe-2b326120ab2b","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sBackgroundManager","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},"resourceVersion":"1.0","name":"ef190d11-a84e-4157-ac21-386fe698b8cc","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"sParallax04","path":"sprites/sParallax04/sParallax04.yy",},
+    "spriteId": {"name":"sBackgroundManager","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"10dfc82e-911b-44fe-88fe-ccd80fef23da","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"f454a078-5f3f-49af-92c1-1867b01fff18","path":"sprites/sParallax04/sParallax04.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"ae261bbd-3b85-4596-9df7-843531e13c2a","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"ef190d11-a84e-4157-ac21-386fe698b8cc","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -58,14 +58,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"sParallax04","path":"sprites/sParallax04/sParallax04.yy",},
+    "parent": {"name":"sBackgroundManager","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},
     "resourceVersion": "1.3",
-    "name": "sParallax04",
+    "name": "sBackgroundManager",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"8acc2933-3c5a-4862-af62-898608db4a81","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"9d28b985-985e-42aa-8bbe-2b326120ab2b","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sParallax04",
+  "name": "sBackgroundManager",
   "tags": [],
   "resourceType": "GMSprite",
 }
