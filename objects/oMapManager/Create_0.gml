@@ -31,6 +31,14 @@ AVAILABLE_MAP_PARTS = [
 	"MapUp01"
 ];
 
+// Extreme position of map parts (to avoid going outside of screen...)
+// MapManager will select pieces to avoid going outside those bounds
+mapYMin = camera_get_view_height(view_camera[0]);
+mapYMax = room_height - camera_get_view_height(view_camera[0]);
+show_debug_message("Min / Max");
+show_debug_message(mapYMin);
+show_debug_message(mapYMax);
+
 
 #region methods
 function init() {
@@ -86,9 +94,30 @@ function activateRandomMapPart() {
 	var layerBaseName = noone;
 	do {
 		layerBaseName = AVAILABLE_MAP_PARTS[irandom(array_length_1d(AVAILABLE_MAP_PARTS)-1)];
-	} until(ds_list_find_index(activeMapParts, layerBaseName) == -1);
+	} until(isMapPartValid(layerBaseName));
 	
 	activateMapPart(layerBaseName);
+}
+
+function isMapPartValid(layerBaseName) {
+	var isNotActive = (ds_list_find_index(activeMapParts, layerBaseName) == -1);
+	
+	var instancesLayer = layer_get_id(layerBaseName + "Instances");
+	var instances = layer_get_all_elements(instancesLayer);
+	var partStartMarker = noone;
+	var partEndMarker = noone;
+	for(var i = 0; i < array_length_1d(instances); i++) {
+		var instance = layer_instance_get_instance(instances[i]);
+		if(instance.object_index == oMapPartStartMarker) {
+			partStartMarker = instance;
+		} else if(instance.object_index == oMapPartEndMarker) {
+			partEndMarker = instance;
+		}
+	}
+	
+	var finalY = lastPartEndY + partEndMarker.originY - partStartMarker.originY;
+	var isInsideBounds = (finalY <= mapYMax && finalY >= mapYMin);	
+	return isNotActive && isInsideBounds;
 }
 
 
