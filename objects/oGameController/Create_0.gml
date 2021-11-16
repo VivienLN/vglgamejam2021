@@ -9,7 +9,6 @@
 // Debugging tools
 #macro GAME_OVER_ENABLED true 
 
-
 // Variables
 global.gameSpeed = GAME_SPEED_BASE;
 global.isGameOver = false;

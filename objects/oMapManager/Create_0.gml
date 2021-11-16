@@ -1,5 +1,5 @@
 // List of map parts
-global.MAP_PARTS = [
+MAP_PARTS = [
 	"Map01",
 	"Map02",
 	"Map03",
@@ -25,11 +25,12 @@ global.MAP_PARTS = [
 	"MapUp01"
 ];
 
-global.AVAILABLE_MAP_PARTS = [
+AVAILABLE_MAP_PARTS = [
 	"Map21",
 	"MapDown01",
 	"MapUp01"
 ];
+
 
 #region methods
 function init() {
@@ -71,8 +72,8 @@ function init() {
 	}
 
 	// Disable all map parts at startup
-	for(var i = 0; i < array_length_1d(global.MAP_PARTS); i++) {
-		deactivateMapPart(global.MAP_PARTS[i]);
+	for(var i = 0; i < array_length_1d(MAP_PARTS); i++) {
+		deactivateMapPart(MAP_PARTS[i]);
 	}
 	
 	// Create a new map part at random
@@ -84,7 +85,7 @@ function init() {
 function activateRandomMapPart() {
 	var layerBaseName = noone;
 	do {
-		layerBaseName = global.AVAILABLE_MAP_PARTS[irandom(array_length_1d(global.AVAILABLE_MAP_PARTS)-1)];
+		layerBaseName = AVAILABLE_MAP_PARTS[irandom(array_length_1d(AVAILABLE_MAP_PARTS)-1)];
 	} until(ds_list_find_index(activeMapParts, layerBaseName) == -1);
 	
 	activateMapPart(layerBaseName);
