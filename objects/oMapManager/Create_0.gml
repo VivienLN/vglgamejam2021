@@ -35,9 +35,6 @@ AVAILABLE_MAP_PARTS = [
 // MapManager will select pieces to avoid going outside those bounds
 mapYMin = camera_get_view_height(view_camera[0]);
 mapYMax = room_height - camera_get_view_height(view_camera[0]);
-show_debug_message("Min / Max");
-show_debug_message(mapYMin);
-show_debug_message(mapYMax);
 
 
 #region methods
