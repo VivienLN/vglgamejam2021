@@ -23,21 +23,27 @@ global.isTitle = true;
 global.scoreDistance = 0;
 
 // Game speed (temporary) alteration function
+speedAlterations = ds_list_create();
 nonAlteredSpeed = global.gameSpeed;
 speedAlterationFrames = 0;
-speedAlterationVariation = 0;
-speedAlterations = ds_list_create();
+speedAlterationFramesTotal = 0;
+
+// For easing
+speedAlterationEasing = noone;
+speedAlterationStart = 0;
+speedAlterationEnd = 0;
 
 // Stop speed alteration and return to previous speed
 function cancelSpeedAlterations() {
 	ds_list_clear(speedAlterations);
 	global.gameSpeed = nonAlteredSpeed;
 	speedAlterationFrames = 0;
+	speedAlterationFramesTotal = 0;
 }
 
 // Enqueue new speed alteration
 // That will be played after the current one (if needed)
-function enqueueSpeedAlteration(newSpeed, duration, variation = 0, cancelOthers = false) {
+function enqueueSpeedAlteration(endValue, duration, easing, cancelOthers = false) {
 	// If speed is not already altered, save it
 	if(ds_list_size(speedAlterations) == 0) {
 		nonAlteredSpeed = global.gameSpeed;
@@ -49,5 +55,5 @@ function enqueueSpeedAlteration(newSpeed, duration, variation = 0, cancelOthers 
 	}
 	
 	// Enqueue animation
-	ds_list_add(speedAlterations, [newSpeed, duration, variation]);
+	ds_list_add(speedAlterations, [endValue, duration, easing]);
 }

@@ -13,6 +13,7 @@
     {"id":{"name":"sParallax03","path":"sprites/sParallax03/sParallax03.yy",},"order":17,},
     {"id":{"name":"sBillboardRail","path":"sprites/sBillboardRail/sBillboardRail.yy",},"order":27,},
     {"id":{"name":"oMapPart01","path":"objects/oMapPart01/oMapPart01.yy",},"order":0,},
+    {"id":{"name":"Easing","path":"scripts/Easing/Easing.yy",},"order":2,},
     {"id":{"name":"sCharacterTrick","path":"sprites/sCharacterTrick/sCharacterTrick.yy",},"order":25,},
     {"id":{"name":"tsCity","path":"tilesets/tsCity/tsCity.yy",},"order":0,},
     {"id":{"name":"oMapObstaclesGroup","path":"objects/oMapObstaclesGroup/oMapObstaclesGroup.yy",},"order":4,},
