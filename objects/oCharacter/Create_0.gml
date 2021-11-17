@@ -80,14 +80,14 @@ part_type_blend(landingParticle, true);
 
 // Define Grind particle
 part_type_shape(grindParticle, pt_shape_square);
-part_type_size(grindParticle, .04, .1, -.001, 0);
+part_type_size(grindParticle, .02, .1, -.001, 0);
 part_type_color2(grindParticle, $88ff88, $00ff00);
 part_type_alpha2(grindParticle, 1, .7);
-part_type_speed(grindParticle, 4, 10, 0, 0);
-part_type_direction(grindParticle, 100, 180, 0, 0);
-part_type_gravity(grindParticle, 0.3, 260);
+part_type_speed(grindParticle, 6, 12, 0, 0);
+part_type_direction(grindParticle, 120, 160, 0, 0);
+part_type_gravity(grindParticle, 0.6, 240);
 part_type_orientation(grindParticle, 0, 359, 10, 0, false);
-part_type_life(grindParticle, 40, 90);
+part_type_life(grindParticle, 60, 120);
 part_type_blend(grindParticle, true);
 
 // Define emitter

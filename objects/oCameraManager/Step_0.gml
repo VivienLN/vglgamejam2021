@@ -8,22 +8,35 @@ if(global.isTitle) {
 // Follow Player
 // -----------------------------
 var targetY = oCharacter.y + CAMERA_OFFSET_Y;
-var cameraBorder = 260;
-var cameraY = camera_get_view_y(view_camera[0]);
-var cameraHeight = camera_get_view_height(view_camera[0]);
+var cameraX = 0;
+var cameraY = camera_get_view_y(CAMERA_DEFAULT);
+var cameraHeight = camera_get_view_height(CAMERA_DEFAULT);
 var targetScreenY = targetY - cameraY;
 
 // If outside camera bounds, move camera
-if(targetScreenY <= cameraBorder) {
-	cameraY = targetY - cameraBorder;
-} else if (targetScreenY >= cameraHeight - cameraBorder) {
-	cameraY = targetY - cameraHeight + cameraBorder;
+if(targetScreenY <= CAMERA_BORDER) {
+	cameraY = targetY - CAMERA_BORDER;
+} else if (targetScreenY >= cameraHeight - CAMERA_BORDER) {
+	cameraY = targetY - cameraHeight + CAMERA_BORDER;
 }
 
-camera_set_view_pos(view_camera[0], 0, cameraY);
+// -----------------------------
+// SCREENSHAKE!!
+// -----------------------------
+if(screenShakeFrames > 0) {
+	cameraX += irandom_range(-screenShakeMagnitude, screenShakeMagnitude);
+	cameraY += irandom_range(-screenShakeMagnitude, screenShakeMagnitude);
+	screenShakeFrames--;
+	screenShakeMagnitude = max(screenShakeMagnitude - screenShakeFade, 0);
+}
 
 // -----------------------------
-// Horizontal scrolling
+// Update view
+// -----------------------------
+camera_set_view_pos(CAMERA_DEFAULT, cameraX, cameraY);
+
+// -----------------------------
+// Background horizontal scrolling
 // -----------------------------
 // Set background layers speed according to game speed
 layer_hspeed(layer_get_id("Ground"), -global.gameSpeed);
@@ -33,7 +46,7 @@ layer_hspeed(layer_get_id("Parallax02"), -global.gameSpeed * .5);
 layer_hspeed(layer_get_id("Parallax03"), -global.gameSpeed * .8);
 
 // -----------------------------
-// Vertical scrolling
+// Background vertical scrolling
 // -----------------------------
 var cameraRatio = cameraY / maxCameraY;
 

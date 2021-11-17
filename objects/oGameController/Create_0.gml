@@ -1,13 +1,15 @@
 // Constants
 #macro KEY_JUMP vk_up
 #macro KEY_DUCK vk_down
-#macro GAME_SPEED_BASE 15 // px/frame
+#macro GAME_SPEED_BASE 10 // px/frame
 #macro GAME_SPEED_INCREASE_THRESHOLD 500
 #macro GAME_SPEED_INCREASE_RATIO 1.05
 #macro FX_BIRDS_CHANCE 10
 
 // Camera
 #macro CAMERA_OFFSET_Y -32
+#macro CAMERA_DEFAULT view_camera[0]
+#macro CAMERA_BORDER 260
 
 // Debugging tools
 #macro GAME_OVER_ENABLED true 

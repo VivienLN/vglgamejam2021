@@ -26,6 +26,9 @@ MAP_PARTS = [
 ];
 
 AVAILABLE_MAP_PARTS = [
+	"Map18",
+	"Map19",
+	"Map20",
 	"Map21",
 	"MapDown01",
 	"MapUp01"
