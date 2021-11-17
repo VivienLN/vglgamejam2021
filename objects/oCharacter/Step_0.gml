@@ -123,7 +123,7 @@ y = newY;
 // Particles
 // -----------------------------
 if(hasJustLanded) {
-	startScreenShake(10, 6, .1);
+	startScreenShake(10, 3, .1);
 	part_emitter_region(trailParticleSystem, trailEmitter, x+22, x+52, y+46, y+76, ps_shape_ellipse, ps_distr_gaussian);
 	part_emitter_burst(trailParticleSystem, trailEmitter, landingParticle, 40);	
 } else if(isGrinding) {

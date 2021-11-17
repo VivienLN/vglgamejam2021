@@ -54,28 +54,8 @@ function init() {
 
 	// Set instances origin X (position according to layer)
 	// (didnt find another way to move a group...)
-	with(oMapObstaclesGroup) {
+	with(oMapGroups) {
 		originX = x;
-		originY = y;
-	}
-	with(oMapGrindablesGroup) {
-		originX = x;
-		originY = y;
-	}
-	with(oMapFxGroup) {
-	 	originX = x;
-		originY = y;
-	}
-	with(oMapGroundGroup) {
-	 	originX = x;
-		originY = y;
-	}
-	with(oMapPartStartMarker) {
-	 	originX = x;
-		originY = y;
-	}
-	with(oMapPartEndMarker) {
-	 	originX = x;
 		originY = y;
 	}
 

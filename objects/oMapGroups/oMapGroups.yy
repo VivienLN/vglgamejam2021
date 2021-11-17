@@ -7,10 +7,7 @@
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": {
-    "name": "oMapGroups",
-    "path": "objects/oMapGroups/oMapGroups.yy",
-  },
+  "parentObjectId": null,
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -31,7 +28,7 @@
     "path": "folders/Objects/MapGroups.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oMapGrindablesGroup",
+  "name": "oMapGroups",
   "tags": [],
   "resourceType": "GMObject",
 }

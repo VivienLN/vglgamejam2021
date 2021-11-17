@@ -1,13 +1,16 @@
 {
   "spriteId": {
-    "name": "sMapPartGroup",
-    "path": "sprites/sMapPartGroup/sMapPartGroup.yy",
+    "name": "sMapGroup",
+    "path": "sprites/sMapGroup/sMapGroup.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "oMapGroups",
+    "path": "objects/oMapGroups/oMapGroups.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -24,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Objects",
-    "path": "folders/Objects.yy",
+    "name": "MapGroups",
+    "path": "folders/Objects/MapGroups.yy",
   },
   "resourceVersion": "1.0",
   "name": "oMapGroundGroup",
