@@ -21,3 +21,33 @@ global.isTitle = true;
 
 // Score
 global.scoreDistance = 0;
+
+// Game speed (temporary) alteration function
+nonAlteredSpeed = global.gameSpeed;
+speedAlterationFrames = 0;
+speedAlterationVariation = 0;
+speedAlterations = ds_list_create();
+
+// Stop speed alteration and return to previous speed
+function cancelSpeedAlterations() {
+	ds_list_clear(speedAlterations);
+	global.gameSpeed = nonAlteredSpeed;
+	speedAlterationFrames = 0;
+}
+
+// Enqueue new speed alteration
+// That will be played after the current one (if needed)
+function enqueueSpeedAlteration(newSpeed, duration, variation = 0, cancelOthers = false) {
+	// If speed is not already altered, save it
+	if(ds_list_size(speedAlterations) == 0) {
+		nonAlteredSpeed = global.gameSpeed;
+	}
+	
+	// Cancel all other animations if wanted
+	if(cancelOthers) {
+		cancelSpeedAlterations();	
+	}
+	
+	// Enqueue animation
+	ds_list_add(speedAlterations, [newSpeed, duration, variation]);
+}

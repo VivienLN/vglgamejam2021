@@ -123,11 +123,11 @@ y = newY;
 // Particles
 // -----------------------------
 if(hasJustLanded) {
-	startScreenShake(10, 3, .1);
+	cameraStartShake(10, 3, .1);
 	part_emitter_region(trailParticleSystem, trailEmitter, x+22, x+52, y+46, y+76, ps_shape_ellipse, ps_distr_gaussian);
 	part_emitter_burst(trailParticleSystem, trailEmitter, landingParticle, 40);	
 } else if(isGrinding) {
-	startScreenShake(2, 4, 1);
+	cameraStartShake(2, 4, 1);
 	part_emitter_region(trailParticleSystem, trailEmitter, x, x+52, y+66, y+66, ps_shape_line, ps_distr_gaussian);
 	part_emitter_stream(trailParticleSystem, trailEmitter, grindParticle, 5);
 } else {
@@ -141,7 +141,7 @@ if(hasJustLanded) {
 // -----------------------------
 if(place_meeting(x, y, oMapObstaclesGroup)) {
 	show_debug_message("Game over!");
-	startScreenShake(30, 8, .02);
+	cameraStartShake(30, 8, .02);
 	part_system_clear(trailParticleSystem);
 	part_particles_clear(trailParticle);
 	part_particles_clear(grindParticle);

@@ -33,7 +33,7 @@
     {"id":{"name":"sUI","path":"sprites/sUI/sUI.yy",},"order":12,},
     {"id":{"name":"sSlopeDown03","path":"sprites/sSlopeDown03/sSlopeDown03.yy",},"order":31,},
     {"id":{"name":"oMapSlopeUpEnd","path":"objects/oMapSlopeUpEnd/oMapSlopeUpEnd.yy",},"order":1,},
-    {"id":{"name":"ScreenShake","path":"scripts/ScreenShake/ScreenShake.yy",},"order":1,},
+    {"id":{"name":"Helpers","path":"scripts/Helpers/Helpers.yy",},"order":1,},
     {"id":{"name":"oMapFxGroup","path":"objects/oMapFxGroup/oMapFxGroup.yy",},"order":0,},
     {"id":{"name":"sGameController","path":"sprites/sGameController/sGameController.yy",},"order":9,},
     {"id":{"name":"sParallax01","path":"sprites/sParallax01/sParallax01.yy",},"order":14,},
