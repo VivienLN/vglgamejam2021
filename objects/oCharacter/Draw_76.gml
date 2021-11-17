@@ -10,8 +10,6 @@ if(isGliding) {
 	} else {
 		sprite_index = sCharacterJumping;
 	}
-	//sprite_index = ySpeed >= 0 ? sCharacterFalling : sCharacterJumping;
-	//sprite_index = sCharacterTrick;	
 } else if(isDucking || isGrinding) {
 	sprite_index = sCharacterDucking;
 } else {

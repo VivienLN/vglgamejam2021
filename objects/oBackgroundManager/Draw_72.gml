@@ -1,7 +1,5 @@
 // Note: object is visible ONLY to be able to hook onto Draw Begin event
 // Because in Step event, camera is not yet updated
-show_debug_message("draw begin: " + string(camera_get_view_y(view_camera[0])));
-
 if(global.isTitle) {
 	return;	
 }
@@ -21,10 +19,6 @@ layer_hspeed(layer_get_id("Parallax03"), -global.gameSpeed * .8);
 // -----------------------------
 var cameraY = camera_get_view_y(view_camera[0]);
 var cameraRatio = cameraY / maxCameraY;
-
-
-show_debug_message("step: " + string(cameraY));
-
 
 var positionSky = ceil(cameraY - cameraRatio * offsetMaxSky);
 layer_y(layer_get_id("Sky"), positionSky);
