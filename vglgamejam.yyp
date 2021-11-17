@@ -1,8 +1,6 @@
 {
   "resources": [
-    {"id":{"name":"sCameraTarget","path":"sprites/sCameraTarget/sCameraTarget.yy",},"order":38,},
     {"id":{"name":"oRailMedium","path":"objects/oRailMedium/oRailMedium.yy",},"order":0,},
-    {"id":{"name":"oCameraTarget","path":"objects/oCameraTarget/oCameraTarget.yy",},"order":20,},
     {"id":{"name":"sMapManager","path":"sprites/sMapManager/sMapManager.yy",},"order":34,},
     {"id":{"name":"sMapPartGroup","path":"sprites/sMapPartGroup/sMapPartGroup.yy",},"order":11,},
     {"id":{"name":"oCrate","path":"objects/oCrate/oCrate.yy",},"order":1,},
@@ -41,7 +39,7 @@
     {"id":{"name":"sParallax01","path":"sprites/sParallax01/sParallax01.yy",},"order":14,},
     {"id":{"name":"oMapManager","path":"objects/oMapManager/oMapManager.yy",},"order":17,},
     {"id":{"name":"oBird","path":"objects/oBird/oBird.yy",},"order":0,},
-    {"id":{"name":"sBackgroundManager","path":"sprites/sBackgroundManager/sBackgroundManager.yy",},"order":39,},
+    {"id":{"name":"sCameraManager","path":"sprites/sCameraManager/sCameraManager.yy",},"order":39,},
     {"id":{"name":"oCharacter","path":"objects/oCharacter/oCharacter.yy",},"order":0,},
     {"id":{"name":"sCrateBalloon","path":"sprites/sCrateBalloon/sCrateBalloon.yy",},"order":19,},
     {"id":{"name":"oFireHydrant","path":"objects/oFireHydrant/oFireHydrant.yy",},"order":0,},
@@ -55,7 +53,7 @@
     {"id":{"name":"oBlock","path":"objects/oBlock/oBlock.yy",},"order":1,},
     {"id":{"name":"sCharacterDucking","path":"sprites/sCharacterDucking/sCharacterDucking.yy",},"order":3,},
     {"id":{"name":"sSlopeDown01","path":"sprites/sSlopeDown01/sSlopeDown01.yy",},"order":33,},
-    {"id":{"name":"oBackgroundManager","path":"objects/oBackgroundManager/oBackgroundManager.yy",},"order":21,},
+    {"id":{"name":"oCameraManager","path":"objects/oCameraManager/oCameraManager.yy",},"order":21,},
     {"id":{"name":"sParallax02","path":"sprites/sParallax02/sParallax02.yy",},"order":15,},
     {"id":{"name":"oMapSlopeDownMiddle","path":"objects/oMapSlopeDownMiddle/oMapSlopeDownMiddle.yy",},"order":3,},
     {"id":{"name":"oCrateBalloon","path":"objects/oCrateBalloon/oCrateBalloon.yy",},"order":2,},
