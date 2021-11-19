@@ -49,8 +49,9 @@ speedAlterationFrames--;
 
 // FOR DEBUG!
 if(keyboard_check_released(vk_space)) {
-	gameEnqueueSpeedAlteration(global.gameSpeed + 20, 60, easeLinear, true);
-	gameEnqueueSpeedAlteration(global.gameSpeed, 60, easeInOutCubic);
+	gameEnqueueSpeedAlteration(global.gameSpeed + 10, 6, easeInOutCubic, true);
+	gameEnqueueSpeedAlteration(global.gameSpeed, 140, easeInOutCubic);
+	cameraStartShake(60, 4, .03);
 }
 
 
@@ -73,16 +74,14 @@ if(speedAlterationFrames <= 0) {
 	// Speed is altered
 	// between 0 (alteration just started) and 1 (alteration just finished)
 	var animationStep = 1 - speedAlterationFrames / speedAlterationFramesTotal;
-	var easingResult = speedAlterationEasing(animationStep); // Linear (todo: easing functions)
-	var easedSpeed = speedAlterationStart + (speedAlterationEnd - speedAlterationStart) * easingResult;
-	global.gameSpeed = max(1, easedSpeed);
+	global.gameSpeed = max(1, easeValues(animationStep, speedAlterationStart, speedAlterationEnd, speedAlterationEasing));
 }
 
 // -----------------------------
 // Speed increase
 // -----------------------------
 // If speed is altered for FX, we wait.
-if(speedAlterationFrames <= 0) {
+if(ds_list_size(speedAlterations) == 0) {
 	// How many times have we travelled GAME_SPEED_INCREASE_THRESHOLD?
 	var ratio = floor(global.scoreDistance / GAME_SPEED_INCREASE_THRESHOLD);
 	// What gameSpeed should be

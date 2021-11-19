@@ -71,6 +71,7 @@
     {"id":{"name":"sTilesCity","path":"sprites/sTilesCity/sTilesCity.yy",},"order":10,},
     {"id":{"name":"oBillboardRail","path":"objects/oBillboardRail/oBillboardRail.yy",},"order":3,},
     {"id":{"name":"oMapPartEndMarker","path":"objects/oMapPartEndMarker/oMapPartEndMarker.yy",},"order":19,},
+    {"id":{"name":"Tween","path":"scripts/Tween/Tween.yy",},"order":3,},
     {"id":{"name":"fDefault","path":"fonts/fDefault/fDefault.yy",},"order":0,},
     {"id":{"name":"Game","path":"rooms/Game/Game.yy",},"order":2,},
     {"id":{"name":"sTuto","path":"sprites/sTuto/sTuto.yy",},"order":20,},
