@@ -53,17 +53,17 @@ if(keyboard_check_released(vk_space)) {
 	if(!tweenTimelineIsRunning(tlGameSpeed) && !tweenTimelineIsRunning(tlPlayerX)) {
 		show_debug_message("VROOOOOOOOOM!!!");
 		// Screenshake for the lulz
-		cameraStartShake(60, 4, .03);
+		cameraStartShake(40, 3, .03);
 	
 		// Game speed
-		var gameSpeedFaster = gameSpeed + 9;
-		tweenAdd(tlGameSpeed, id, "gameSpeed", gameSpeed, gameSpeedFaster, 10, easeInOutCubic, true);
-		tweenAdd(tlGameSpeed, id, "gameSpeed", gameSpeedFaster, gameSpeed, 120, easeInOutCubic);
+		var gameSpeedFaster = gameSpeed + 8;
+		tweenAdd(tlGameSpeed, id, "gameSpeed", gameSpeed, gameSpeedFaster, 10, easeInOutQuad, true);
+		tweenAdd(tlGameSpeed, id, "gameSpeed", gameSpeedFaster, gameSpeed, 100, easeInOutCubic);
 		
 		// Player X
 		with(oCharacter) {
-			tweenAdd(other.tlPlayerX, id, "x", x, x + 60, 50, easeInOutCubic, true);
-			tweenAdd(other.tlPlayerX, id, "x", x + 60, x, 80, easeInOutCubic);
+			tweenAdd(other.tlPlayerX, id, "x", x, x + 60, 40, easeOutCubic, true);
+			tweenAdd(other.tlPlayerX, id, "x", x + 60, x, 60, easeInOutQuad);
 		}
 	}
 }
