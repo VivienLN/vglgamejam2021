@@ -22,38 +22,9 @@ global.isTitle = true;
 // Score
 global.scoreDistance = 0;
 
-// Game speed (temporary) alteration function
-speedAlterations = ds_list_create();
-nonAlteredSpeed = global.gameSpeed;
-speedAlterationFrames = 0;
-speedAlterationFramesTotal = 0;
-
-// For easing
-speedAlterationEasing = noone;
-speedAlterationStart = 0;
-speedAlterationEnd = 0;
-
-// Stop speed alteration and return to previous speed
-function cancelSpeedAlterations() {
-	ds_list_clear(speedAlterations);
-	global.gameSpeed = nonAlteredSpeed;
-	speedAlterationFrames = 0;
-	speedAlterationFramesTotal = 0;
-}
-
-// Enqueue new speed alteration
-// That will be played after the current one (if needed)
-function enqueueSpeedAlteration(endValue, duration, easing, cancelOthers = false) {
-	// If speed is not already altered, save it
-	if(ds_list_size(speedAlterations) == 0) {
-		nonAlteredSpeed = global.gameSpeed;
-	}
-	
-	// Cancel all other animations if wanted
-	if(cancelOthers) {
-		cancelSpeedAlterations();	
-	}
-	
-	// Enqueue animation
-	ds_list_add(speedAlterations, [endValue, duration, easing]);
-}
+// Tween timeline system for camera movements
+tlGameSpeed = tweenTimelineCreate();
+tlPlayerX = tweenTimelineCreate();
+// store gamespeed locally to be able to use tweens
+// (workaround the impossibility to access global inside tween script)
+gameSpeed = global.gameSpeed;

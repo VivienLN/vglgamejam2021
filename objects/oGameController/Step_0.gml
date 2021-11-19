@@ -41,47 +41,43 @@ if(global.isGameOver) {
 // -----------------------------
 global.scoreDistance += global.gameSpeed / 32;
 
-
 // -----------------------------
 // Game speed (temporary) alteration
 // -----------------------------
-speedAlterationFrames--;
-
-// FOR DEBUG!
+// store gamespeed locally to be able to use tweens
+// (workaround the impossibility to access global inside tween script)
+gameSpeed = global.gameSpeed;
+	
+// This is for testing purposes!
 if(keyboard_check_released(vk_space)) {
-	gameEnqueueSpeedAlteration(global.gameSpeed + 10, 6, easeInOutCubic, true);
-	gameEnqueueSpeedAlteration(global.gameSpeed, 140, easeInOutCubic);
-	cameraStartShake(60, 4, .03);
-}
-
-
-// No speed alteration playing
-if(speedAlterationFrames <= 0) {
-	if(ds_list_size(speedAlterations) > 0) {
-		// Start next speed alteration from queue
-		speedAlterationStart = global.gameSpeed;
-		speedAlterationEnd = speedAlterations[|0][0];
-		speedAlterationFrames = speedAlterations[|0][1];
-		speedAlterationFramesTotal = speedAlterations[|0][1];
-		speedAlterationEasing = speedAlterations[|0][2];
-		// Remove it immediately
-		ds_list_delete(speedAlterations, 0);
-	} else {
-		// Reset speed
-		global.gameSpeed = nonAlteredSpeed;
+	if(!tweenTimelineIsRunning(tlGameSpeed) && !tweenTimelineIsRunning(tlPlayerX)) {
+		show_debug_message("VROOOOOOOOOM!!!");
+		// Screenshake for the lulz
+		cameraStartShake(60, 4, .03);
+	
+		// Game speed
+		var gameSpeedFaster = gameSpeed + 9;
+		tweenAdd(tlGameSpeed, id, "gameSpeed", gameSpeed, gameSpeedFaster, 10, easeInOutCubic, true);
+		tweenAdd(tlGameSpeed, id, "gameSpeed", gameSpeedFaster, gameSpeed, 120, easeInOutCubic);
+		
+		// Player X
+		with(oCharacter) {
+			tweenAdd(other.tlPlayerX, id, "x", x, x + 60, 50, easeInOutCubic, true);
+			tweenAdd(other.tlPlayerX, id, "x", x + 60, x, 80, easeInOutCubic);
+		}
 	}
-} else {
-	// Speed is altered
-	// between 0 (alteration just started) and 1 (alteration just finished)
-	var animationStep = 1 - speedAlterationFrames / speedAlterationFramesTotal;
-	global.gameSpeed = max(1, easeValues(animationStep, speedAlterationStart, speedAlterationEnd, speedAlterationEasing));
 }
+// Tween step
+tweenStep(tlGameSpeed);
+tweenStep(tlPlayerX);
+// set global speed
+global.gameSpeed = gameSpeed;
 
 // -----------------------------
 // Speed increase
 // -----------------------------
 // If speed is altered for FX, we wait.
-if(ds_list_size(speedAlterations) == 0) {
+if(!tweenTimelineIsRunning(tlGameSpeed)) {
 	// How many times have we travelled GAME_SPEED_INCREASE_THRESHOLD?
 	var ratio = floor(global.scoreDistance / GAME_SPEED_INCREASE_THRESHOLD);
 	// What gameSpeed should be
@@ -92,7 +88,6 @@ if(ds_list_size(speedAlterations) == 0) {
 		global.gameSpeed = targetSpeed;
 		show_debug_message("FASTER!!!");
 	}
-
 }
 
 
