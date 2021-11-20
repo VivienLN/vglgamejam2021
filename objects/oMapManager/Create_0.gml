@@ -36,7 +36,6 @@ AVAILABLE_MAP_PARTS = [
 mapYMin = camera_get_view_height(view_camera[0]);
 mapYMax = room_height - camera_get_view_height(view_camera[0]);
 
-
 #region methods
 function init() {
 	// For RNG to be... random ¯\_(ツ)_/¯

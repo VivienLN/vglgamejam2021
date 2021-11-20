@@ -30,6 +30,7 @@
     {"id":{"name":"sSlopeUp01","path":"sprites/sSlopeUp01/sSlopeUp01.yy",},"order":28,},
     {"id":{"name":"sBird","path":"sprites/sBird/sBird.yy",},"order":21,},
     {"id":{"name":"sBirdFlying","path":"sprites/sBirdFlying/sBirdFlying.yy",},"order":22,},
+    {"id":{"name":"sWindParticle","path":"sprites/sWindParticle/sWindParticle.yy",},"order":41,},
     {"id":{"name":"sGround","path":"sprites/sGround/sGround.yy",},"order":7,},
     {"id":{"name":"sUI","path":"sprites/sUI/sUI.yy",},"order":12,},
     {"id":{"name":"sSlopeDown03","path":"sprites/sSlopeDown03/sSlopeDown03.yy",},"order":31,},

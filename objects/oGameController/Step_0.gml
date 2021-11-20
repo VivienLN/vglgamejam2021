@@ -65,8 +65,23 @@ if(keyboard_check_released(vk_space)) {
 			tweenAdd(other.tlPlayerX, id, "x", x, x + 70, 30, easeOutCubic, true);
 			tweenAdd(other.tlPlayerX, id, "x", x + 70, x, 80, easeInOutQuad);
 		}
+		
+		// Particles
+		part_emitter_stream(windParticleSystem, windEmitter, windParticle, -2);
 	}
+} else {
+	part_emitter_stream(windParticleSystem, windEmitter, windParticle, -8);
 }
+
+// Wind particles, depending of gamespeed
+// For 
+var minR = -12;
+var maxR = -1;
+var minSpeed = GAME_SPEED_BASE;
+var maxSpeed = 20;
+var r = minR + (maxR - minR) * (global.gameSpeed - minSpeed) / (maxSpeed - minSpeed);
+part_emitter_stream(windParticleSystem, windEmitter, windParticle, r);
+
 // Tween step
 tweenStep(tlGameSpeed);
 tweenStep(tlPlayerX);

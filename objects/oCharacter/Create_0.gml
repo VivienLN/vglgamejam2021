@@ -53,6 +53,7 @@ trailParticleSystem = part_system_create();
 trailParticle = part_type_create();
 landingParticle = part_type_create();
 grindParticle = part_type_create();
+windParticle = part_type_create();
 
 // Define Trail particle
 part_type_shape(trailParticle, pt_shape_square);
