@@ -1,7 +1,7 @@
 // Constants
 #macro KEY_JUMP vk_up
 #macro KEY_DUCK vk_down
-#macro GAME_SPEED_BASE 12 // px/frame
+#macro GAME_SPEED_BASE 14 // px/frame
 #macro GAME_SPEED_INCREASE_THRESHOLD 500
 #macro GAME_SPEED_INCREASE_RATIO 1.05
 #macro FX_BIRDS_CHANCE 10
