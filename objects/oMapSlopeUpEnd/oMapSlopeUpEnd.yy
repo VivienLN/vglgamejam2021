@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "sSlopeUp03",
-    "path": "sprites/sSlopeUp03/sSlopeUp03.yy",
+    "name": "sSlopeUpEnd",
+    "path": "sprites/sSlopeUpEnd/sSlopeUpEnd.yy",
   },
   "solid": false,
   "visible": true,

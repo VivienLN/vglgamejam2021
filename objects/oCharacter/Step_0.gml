@@ -5,59 +5,139 @@ jumpFrames--;
 duckRecoveryFrames--;
 grindRecoveryFrames--;
 
+// -----------------------------
 // Game Over
+// -----------------------------
 if(global.isGameOver) {
 	return;	
 }
 
+// -----------------------------
 // Title
+// -----------------------------
 if(global.isTitle) {
 	return;	
 }
 
-// Grinding
-isGrinding = (canGrindInstance != noone) && keyboard_check(KEY_DUCK);
-if(isGrinding) {
-	grindRecoveryFrames = maxGrindRecoveryFrames;
+// -----------------------------
+// Ground collision
+// -----------------------------
+var newY = y + ySpeed;
+
+// collision with ground
+lastIsOnGround = isOnGround;
+isOnGround = false;
+// Collision with Ground object
+while(place_meeting(x, newY, oMapGroundGroup)) {
+	newY--;
+	// Now we can update "isOnGround"
+	isOnGround = true;
 }
 
+// -----------------------------
+// Check keys
+// -----------------------------
+if(!keyboard_check(KEY_JUMP)) {
+	mustReleaseJump = false;
+}
+if(!keyboard_check(KEY_DUCK)) {
+	mustReleaseDuck = false;
+}
+
+// -----------------------------
+// Grinding collision
+// -----------------------------
+isGrinding = false;
+if(!isOnGround && keyboard_check(KEY_DUCK) && !mustReleaseDuck) {
+	while(place_meeting(x, newY, oMapGrindablesGroup)) {
+		newY--;
+		isGrinding = true;
+		grindRecoveryFrames = maxGrindRecoveryFrames;
+	}
+}
+
+// JustLanded is always false if we were on the ground in the last frame
+var hasJustLanded = (!lastIsOnGround && isOnGround);
+
+// -----------------------------
+// Flags
+// -----------------------------
+if(isOnGround) {
+	canJump = !mustReleaseJump;
+	canDuck = !mustReleaseDuck;
+	canGlide = false;
+	isFalling = false;
+} else {
+	canJump = !mustReleaseJump && (isGrinding || grindRecoveryFrames > 0);
+	canDuck = false;
+	canGlide = !canJump && !mustReleaseJump;
+	isFalling = !isGrinding;
+}
+
+// "Cancel big jump"
+if(isGliding || isGrinding || isOnGround) {
+	isBigJump = false;
+}
+
+// -----------------------------
+// Gliding
+// -----------------------------
+isGliding = canGlide && keyboard_check(KEY_JUMP);
+
+// -----------------------------
+// Update position and speed for next frame
+// -----------------------------
+y = newY;
+if(isGliding) {
+	ySpeed = glidingYSpeed + random_range(-glidingYSpeedVariation, glidingYSpeedVariation);
+} else {
+	ySpeed = min(ySpeed + grav, maxYspeed);
+}
+
+// -----------------------------
 // Jumping
+// -----------------------------
 if(keyboard_check(KEY_JUMP)) {
 	if(canJump) {
+		mustReleaseJump = true;
+		mustReleaseDuck = true;
 		if(duckRecoveryFrames > 0 || grindRecoveryFrames > 0) {
 			isBigJump = true;
 		}
-		jumpSpeed = isBigJump ? bigJumpSpeed : baseJumpSpeed;
 		jumpFrames = maxJumpFrames;
 		duckRecoveryFrames = 0;
 		grindRecoveryFrames = 0;
 	}
+	jumpSpeed = isBigJump ? bigJumpSpeed : baseJumpSpeed;
 	if(jumpFrames > 0) {
 		ySpeed = -jumpSpeed;
 	}
 }
 
+// -----------------------------
 // Ducking
-if(canDuck) {
-	isDucking = keyboard_check(KEY_DUCK);
-}
+// -----------------------------
+isDucking = canDuck && keyboard_check(KEY_DUCK);
 
-// Gliding
-isGliding = canGlide && keyboard_check(KEY_JUMP);
-
+// -----------------------------
 // Recovery for ducking / grinding and big jump
+// -----------------------------
 if(isDucking || isGrinding) {
 	duckRecoveryFrames = maxDuckRecoveryFrames;
 }
 
+// -----------------------------
 // Trail
+// -----------------------------
 ds_list_insert(trailPoints, 0, y);
 var trailPointsNumber = ceil((x + trailOffsetX) / global.gameSpeed) + 1;
 while(ds_list_size(trailPoints) > trailPointsNumber) {
 	ds_list_delete(trailPoints, ds_list_size(trailPoints) - 1);
 }
 
+// -----------------------------
 // Tailwind (same principle)
+// -----------------------------
 if(isGliding) {
 	var tailwindY = y;
 	var tailwindSize = .8; // If 1, takes all the place between player and border of screen
@@ -70,54 +150,6 @@ if(isGliding) {
 	ds_list_delete(tailwindPoints, 0);
 	ds_list_delete(tailwindPoints, ds_list_size(tailwindPoints) - 1);
 }
-
-// -----------------------------
-// Update position
-// -----------------------------
-if(isGrinding) {
-	ySpeed = 0;
-	var newY = canGrindInstance.y + canGrindInstance.grindY - sprite_height;
-} else {
-	ySpeed = isGliding ? glidingYSpeed + random_range(-glidingYSpeedVariation, glidingYSpeedVariation) : min(ySpeed + grav, maxYspeed);
-	var newY = y + (ySpeed);
-
-	// collision with ground
-	lastIsOnGround = isOnGround;
-	isOnGround = false;
-	// Collision with Ground object
-	while(place_meeting(x, newY, oMapGroundGroup)) {
-		newY--;
-		// Now we can update "isOnGround"
-		isOnGround = true;
-	}	
-}
-
-// JustLanded is always false if we were on the ground in the last frame
-var hasJustLanded = (!lastIsOnGround && isOnGround);
-
-// Flags
-if(isOnGround) {
-	canJump = !keyboard_check(KEY_JUMP);
-	canDuck = true;
-	canGlide = false;
-	isFalling = false;
-	canGrindInstance = noone;
-} else {
-	canJump = isGrinding || grindRecoveryFrames > 0;
-	canDuck = false;
-	canGlide = !canJump && (isGliding || !keyboard_check(KEY_JUMP));
-	isFalling = !isGrinding;
-	
-	canGrindInstance = instance_place(x, newY, oMapGrindablesGroup);
-}
-
-// "Cancel big jump"
-if(isGliding || isGrinding || isOnGround) {
-	isBigJump = false;
-}
-
-// Update
-y = newY;
 
 // -----------------------------
 // Particles

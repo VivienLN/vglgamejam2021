@@ -1,6 +1,6 @@
 {
-  "bboxMode": 0,
-  "collisionKind": 0,
+  "bboxMode": 2,
+  "collisionKind": 1,
   "type": 0,
   "origin": 0,
   "preMultiplyAlpha": false,
@@ -9,13 +9,13 @@
   "swfPrecision": 2.525,
   "bbox_left": 0,
   "bbox_right": 63,
-  "bbox_top": 16,
-  "bbox_bottom": 63,
+  "bbox_top": 28,
+  "bbox_bottom": 31,
   "HTile": false,
   "VTile": false,
   "For3D": false,
   "width": 64,
-  "height": 64,
+  "height": 32,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"95c3ab3a-ee45-4c61-b97a-44d9df77de72","path":"sprites/sSlopeUp02/sSlopeUp02.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"95c3ab3a-ee45-4c61-b97a-44d9df77de72","path":"sprites/sSlopeUp02/sSlopeUp02.yy",},"LayerId":{"name":"62e4ff82-cccd-429b-9c02-38238b45c208","path":"sprites/sSlopeUp02/sSlopeUp02.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sSlopeUp02","path":"sprites/sSlopeUp02/sSlopeUp02.yy",},"resourceVersion":"1.0","name":"95c3ab3a-ee45-4c61-b97a-44d9df77de72","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"b6f16ede-af7b-4ac4-a863-cadfc8a8769d","path":"sprites/sRailFlat/sRailFlat.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"b6f16ede-af7b-4ac4-a863-cadfc8a8769d","path":"sprites/sRailFlat/sRailFlat.yy",},"LayerId":{"name":"93df15d8-4a59-43dd-8a14-53a673fa09c5","path":"sprites/sRailFlat/sRailFlat.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sRailFlat","path":"sprites/sRailFlat/sRailFlat.yy",},"resourceVersion":"1.0","name":"b6f16ede-af7b-4ac4-a863-cadfc8a8769d","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"sSlopeUp02","path":"sprites/sSlopeUp02/sSlopeUp02.yy",},
+    "spriteId": {"name":"sRailFlat","path":"sprites/sRailFlat/sRailFlat.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"37927364-6c49-4f9b-8582-b4a3753b1a4d","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"95c3ab3a-ee45-4c61-b97a-44d9df77de72","path":"sprites/sSlopeUp02/sSlopeUp02.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"693ec3b1-2b03-456a-872f-f2a6b2cc3063","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b6f16ede-af7b-4ac4-a863-cadfc8a8769d","path":"sprites/sRailFlat/sRailFlat.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -58,14 +58,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"sSlopeUp02","path":"sprites/sSlopeUp02/sSlopeUp02.yy",},
+    "parent": {"name":"sRailFlat","path":"sprites/sRailFlat/sRailFlat.yy",},
     "resourceVersion": "1.3",
-    "name": "sSlopeUp02",
+    "name": "sRailFlat",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"62e4ff82-cccd-429b-9c02-38238b45c208","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"93df15d8-4a59-43dd-8a14-53a673fa09c5","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": null,
   "parent": {
@@ -73,7 +73,7 @@
     "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sSlopeUp02",
+  "name": "sRailFlat",
   "tags": [],
   "resourceType": "GMSprite",
 }

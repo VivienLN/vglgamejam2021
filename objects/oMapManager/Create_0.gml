@@ -26,9 +26,8 @@ MAP_PARTS = [
 ];
 
 AVAILABLE_MAP_PARTS = [
+	"Map22",
 	"Map21",
-	"MapDown01",
-	"MapUp01"
 ];
 
 // Extreme position of map parts (to avoid going outside of screen...)

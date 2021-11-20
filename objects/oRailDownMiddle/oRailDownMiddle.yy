@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "sSlopeDownEnd",
-    "path": "sprites/sSlopeDownEnd/sSlopeDownEnd.yy",
+    "name": "sRailDownMiddle",
+    "path": "sprites/sRailDownMiddle/sRailDownMiddle.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "oMapGroundGroup",
-    "path": "objects/oMapGroundGroup/oMapGroundGroup.yy",
+    "name": "oMapGrindablesGroup",
+    "path": "objects/oMapGrindablesGroup/oMapGrindablesGroup.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -27,11 +27,11 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "MapGround",
-    "path": "folders/Objects/MapGround.yy",
+    "name": "MapGrindables",
+    "path": "folders/Objects/MapGrindables.yy",
   },
   "resourceVersion": "1.0",
-  "name": "oMapSlopeDownEnd",
+  "name": "oRailDownMiddle",
   "tags": [],
   "resourceType": "GMObject",
 }

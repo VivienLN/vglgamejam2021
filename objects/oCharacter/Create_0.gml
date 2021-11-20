@@ -27,11 +27,12 @@ canGlide = false;
 isGliding = false;
 jumpFrames = 0;
 jumpSpeed = 0;
+mustReleaseJump = false;
 
 canDuck = false;
 isDucking = false;
+mustReleaseDuck = false;
 
-canGrindInstance = noone;
 isGrinding = false;
 
 duckRecoveryFrames = 0;
