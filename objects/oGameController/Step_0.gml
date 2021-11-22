@@ -13,11 +13,11 @@ if(isGameOver) {
 // -----------------------------
 // Title
 // -----------------------------
-if(global.isTitle) {
+if(isTitle) {
 	// Press any key to retry
 	// (except jump/duck keys)
 	if(keyboard_check_released(vk_anykey)) {
-		global.isTitle = false;
+		isTitle = false;
 		instanceTuto.visible = false;
 		// Music
 		if(!audio_is_playing(sndMusic)) {

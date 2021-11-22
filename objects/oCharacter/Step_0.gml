@@ -15,7 +15,7 @@ if(oGameController.isGameOver) {
 // -----------------------------
 // Title
 // -----------------------------
-if(global.isTitle) {
+if(oGameController.isTitle) {
 	return;	
 }
 

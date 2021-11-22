@@ -1,6 +1,6 @@
 // Note: object is visible ONLY to be able to hook onto Draw Begin event
 // Because in Step event, camera is not yet updated
-if(global.isTitle) {
+if(oGameController.isTitle) {
 	return;	
 }
 

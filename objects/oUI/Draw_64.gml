@@ -1,4 +1,4 @@
-if(global.isTitle) {
+if(oGameController.isTitle) {
 	draw_set_halign(fa_center);
 	draw_set_font(fTitle);
 	draw_set_color($ffff00);
