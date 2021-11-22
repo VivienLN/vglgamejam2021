@@ -19,8 +19,7 @@ if(global.isTitle) {
 	}
 }
 
-
-if(global.isGameOver) {
+if(oGameController.isGameOver) {
 	draw_set_font(fGameOver);
 	draw_set_color($00ffff);
 	draw_set_halign(fa_center);

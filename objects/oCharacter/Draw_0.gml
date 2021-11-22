@@ -1,5 +1,5 @@
 var gameSpeed = oGameController.gameSpeed;
-if(!global.isGameOver) {
+if(!oGameController.isGameOver) {
 	// Draw trail
 	var globalAlpha = random_range(-.5, 0);
 	

@@ -16,7 +16,7 @@
 
 // Variables
 gameSpeed = GAME_SPEED_BASE;
-global.isGameOver = false;
+isGameOver = false;
 global.isTitle = true;
 
 // Score

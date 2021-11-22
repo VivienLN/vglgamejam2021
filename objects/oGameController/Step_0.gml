@@ -1,7 +1,7 @@
 // -----------------------------
 // Game Over
 // -----------------------------
-if(global.isGameOver) {
+if(isGameOver) {
 	// Press any key to retry
 	// (except jump/duck keys)
 	if(keyboard_check_released(vk_anykey) && !keyboard_check_released(KEY_JUMP) && !keyboard_check_released(KEY_DUCK)) {
@@ -32,7 +32,7 @@ if(global.isTitle) {
 // -----------------------------
 // Return if game over
 // -----------------------------
-if(global.isGameOver) {
+if(isGameOver) {
 	return; 
 }
 

@@ -8,7 +8,7 @@ grindRecoveryFrames--;
 // -----------------------------
 // Game Over
 // -----------------------------
-if(global.isGameOver) {
+if(oGameController.isGameOver) {
 	return;	
 }
 
@@ -181,6 +181,8 @@ if(place_meeting(x, y, oMapObstaclesGroup)) {
 	part_emitter_clear(trailParticleSystem, trailEmitter);
 	
 	if(GAME_OVER_ENABLED) {
-		global.isGameOver = true;		
+		with(oGameController) {
+			isGameOver = true;
+		}	
 	}
 }
