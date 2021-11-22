@@ -12,7 +12,11 @@ if(global.isTitle) {
 	draw_set_color($ffffff);
 	draw_set_halign(fa_left);
 	draw_set_font(fDefault);
-	draw_text(20, 20, string(round(global.scoreDistance)) + "m parcourus");
+	
+	with(oGameController) {
+		draw_text(20, 20, string(score) + " points");
+		draw_text(20, 60, "Combo x" + string(scoreMultiplier) + "!");
+	}
 }
 
 
@@ -21,7 +25,9 @@ if(global.isGameOver) {
 	draw_set_color($00ffff);
 	draw_set_halign(fa_center);
 	draw_text(room_width / 2, 200, "GAME OVER");
-	draw_text(room_width / 2, 260, "Tu as parcouru " + string(round(global.scoreDistance)) + "m");
+	with(oGameController) {
+		draw_text(room_width / 2, 260, "Tu as fait " + string(score) + " points");
+	}
 	if(blink) {
 		draw_set_font(fDefault);
 		draw_set_color($ffffff);

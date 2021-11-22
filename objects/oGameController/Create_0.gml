@@ -20,7 +20,9 @@ global.isGameOver = false;
 global.isTitle = true;
 
 // Score
-global.scoreDistance = 0;
+score = 0;
+distance = 0;
+scoreMultiplier = 1;
 
 // Define Wind particle
 windParticleSystem = part_system_create();

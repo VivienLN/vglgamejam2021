@@ -39,7 +39,8 @@ if(global.isGameOver) {
 // -----------------------------
 // Score
 // -----------------------------
-global.scoreDistance += global.gameSpeed / 32;
+distance += global.gameSpeed / 32;
+score += ceil(global.gameSpeed * scoreMultiplier / 100);
 
 // -----------------------------
 // Game speed (temporary) alteration
@@ -94,7 +95,7 @@ global.gameSpeed = gameSpeed;
 // If speed is altered for FX, we wait.
 if(!tweenTimelineIsRunning(tlGameSpeed)) {
 	// How many times have we travelled GAME_SPEED_INCREASE_THRESHOLD?
-	var ratio = floor(global.scoreDistance / GAME_SPEED_INCREASE_THRESHOLD);
+	var ratio = floor(distance / GAME_SPEED_INCREASE_THRESHOLD);
 	// What gameSpeed should be
 	var targetSpeed = ceil(power(GAME_SPEED_INCREASE_RATIO, ratio) * GAME_SPEED_BASE);
 
