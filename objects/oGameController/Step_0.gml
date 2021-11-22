@@ -7,7 +7,7 @@ if(global.isGameOver) {
 	if(keyboard_check_released(vk_anykey) && !keyboard_check_released(KEY_JUMP) && !keyboard_check_released(KEY_DUCK)) {
 		room_restart();
 	}
-	global.gameSpeed = 0;
+	gameSpeed = 0;
 }
 
 // -----------------------------
@@ -39,16 +39,12 @@ if(global.isGameOver) {
 // -----------------------------
 // Score
 // -----------------------------
-distance += global.gameSpeed / 32;
-score += ceil(global.gameSpeed * scoreMultiplier / 100);
+distance += gameSpeed / 32;
+score += ceil(gameSpeed * scoreMultiplier / 100);
 
 // -----------------------------
 // Game speed (temporary) alteration
-// -----------------------------
-// store gamespeed locally to be able to use tweens
-// (workaround the impossibility to access global inside tween script)
-gameSpeed = global.gameSpeed;
-	
+// -----------------------------	
 // This is for testing purposes!
 if(keyboard_check_released(vk_space)) {
 	if(!tweenTimelineIsRunning(tlGameSpeed) && !tweenTimelineIsRunning(tlPlayerX)) {
@@ -80,14 +76,12 @@ var minR = -12;
 var maxR = -1;
 var minSpeed = GAME_SPEED_BASE;
 var maxSpeed = 20;
-var r = minR + (maxR - minR) * (global.gameSpeed - minSpeed) / (maxSpeed - minSpeed);
+var r = minR + (maxR - minR) * (gameSpeed - minSpeed) / (maxSpeed - minSpeed);
 part_emitter_stream(windParticleSystem, windEmitter, windParticle, r);
 
 // Tween step
 tweenStep(tlGameSpeed);
 tweenStep(tlPlayerX);
-// set global speed
-global.gameSpeed = gameSpeed;
 
 // -----------------------------
 // Speed increase
@@ -99,9 +93,9 @@ if(!tweenTimelineIsRunning(tlGameSpeed)) {
 	// What gameSpeed should be
 	var targetSpeed = ceil(power(GAME_SPEED_INCREASE_RATIO, ratio) * GAME_SPEED_BASE);
 
-	if(targetSpeed > global.gameSpeed) {
+	if(targetSpeed > gameSpeed) {
 		// Burst speed
-		global.gameSpeed = targetSpeed;
+		gameSpeed = targetSpeed;
 		show_debug_message("FASTER!!!");
 	}
 }

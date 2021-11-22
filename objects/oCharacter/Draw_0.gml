@@ -1,3 +1,4 @@
+var gameSpeed = oGameController.gameSpeed;
 if(!global.isGameOver) {
 	// Draw trail
 	var globalAlpha = random_range(-.5, 0);
@@ -7,9 +8,9 @@ if(!global.isGameOver) {
 	draw_set_alpha(.9 + random_range(-.5, 0));
 
 	for(var i = 0; i < ds_list_size(trailPoints) - 1; i++) {
-		var pointX = x - (i * global.gameSpeed) + trailOffsetX;
+		var pointX = x - (i * gameSpeed) + trailOffsetX;
 		var pointY = trailPoints[|i] + trailOffsetY;
-		var nextX = x - ((i + 1) * global.gameSpeed) + trailOffsetX;
+		var nextX = x - ((i + 1) * gameSpeed) + trailOffsetX;
 		var nextY = trailPoints[|i + 1] + trailOffsetY;
 		draw_line_width(pointX, pointY, nextX, nextY, 4);
 	}
@@ -22,15 +23,15 @@ if(!global.isGameOver) {
 		var lineAlpha = maxAlpha - (i / ds_list_size(tailwindPoints) * maxAlpha);
 		draw_set_alpha(lineAlpha);
 		
-		var pointX = x - (i * global.gameSpeed) + tailwindOffsetX;
+		var pointX = x - (i * gameSpeed) + tailwindOffsetX;
 		var pointY = tailwindPoints[|i] + tailwindOffsetY;
-		var nextX = x - ((i + 1) * global.gameSpeed) + tailwindOffsetX;
+		var nextX = x - ((i + 1) * gameSpeed) + tailwindOffsetX;
 		var nextY = tailwindPoints[|i + 1] + tailwindOffsetY;
 		draw_line_width(pointX, pointY, nextX, nextY, 2);
 		
-		var point2X = x - (i * global.gameSpeed) + tailwindOffset2X;
+		var point2X = x - (i * gameSpeed) + tailwindOffset2X;
 		var point2Y = tailwindPoints[|i] + tailwindOffset2Y;
-		var next2X = x - ((i + 1) * global.gameSpeed) + tailwindOffset2X;
+		var next2X = x - ((i + 1) * gameSpeed) + tailwindOffset2X;
 		var next2Y = tailwindPoints[|i + 1] + tailwindOffset2Y;
 		draw_line_width(point2X, point2Y, next2X, next2Y, 2);
 	}

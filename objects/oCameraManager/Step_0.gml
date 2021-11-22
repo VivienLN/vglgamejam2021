@@ -4,6 +4,8 @@ if(global.isTitle) {
 	return;	
 }
 
+var gameSpeed = oGameController.gameSpeed;
+
 // -----------------------------
 // Follow Player
 // -----------------------------
@@ -39,11 +41,11 @@ camera_set_view_pos(CAMERA_DEFAULT, cameraX, cameraY);
 // Background horizontal scrolling
 // -----------------------------
 // Set background layers speed according to game speed
-layer_hspeed(layer_get_id("Ground"), -global.gameSpeed);
-layer_hspeed(layer_get_id("Clouds"), -global.gameSpeed * .01);
-layer_hspeed(layer_get_id("Parallax01"), -global.gameSpeed * .2);
-layer_hspeed(layer_get_id("Parallax02"), -global.gameSpeed * .5);
-layer_hspeed(layer_get_id("Parallax03"), -global.gameSpeed * .8);
+layer_hspeed(layer_get_id("Ground"), -gameSpeed);
+layer_hspeed(layer_get_id("Clouds"), -gameSpeed * .01);
+layer_hspeed(layer_get_id("Parallax01"), -gameSpeed * .2);
+layer_hspeed(layer_get_id("Parallax02"), -gameSpeed * .5);
+layer_hspeed(layer_get_id("Parallax03"), -gameSpeed * .8);
 
 // -----------------------------
 // Background vertical scrolling

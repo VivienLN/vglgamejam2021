@@ -130,7 +130,7 @@ if(isDucking || isGrinding) {
 // Trail
 // -----------------------------
 ds_list_insert(trailPoints, 0, y);
-var trailPointsNumber = ceil((x + trailOffsetX) / global.gameSpeed) + 1;
+var trailPointsNumber = ceil((x + trailOffsetX) / oGameController.gameSpeed) + 1;
 while(ds_list_size(trailPoints) > trailPointsNumber) {
 	ds_list_delete(trailPoints, ds_list_size(trailPoints) - 1);
 }
@@ -142,7 +142,7 @@ if(isGliding) {
 	var tailwindY = y;
 	var tailwindSize = .8; // If 1, takes all the place between player and border of screen
 	ds_list_insert(tailwindPoints, 0, tailwindY);
-	var tailwindPointsNumber = ceil(((x + tailwindOffsetX) / global.gameSpeed) * tailwindSize) + 1;
+	var tailwindPointsNumber = ceil(((x + tailwindOffsetX) / oGameController.gameSpeed) * tailwindSize) + 1;
 	while(ds_list_size(tailwindPoints) > tailwindPointsNumber) {
 		ds_list_delete(tailwindPoints, ds_list_size(tailwindPoints) - 1);
 	}

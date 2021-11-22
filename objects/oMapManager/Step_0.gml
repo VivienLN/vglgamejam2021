@@ -3,4 +3,6 @@ if(global.isTitle) {
 }
 
 // Move map parts
-moveAllMapParts(-global.gameSpeed);
+with(oGameController) {
+	other.moveAllMapParts(-gameSpeed);
+}

@@ -11,6 +11,6 @@ if(x > room_width) {
 // When getting close to player, fly away
 if(x <= targetX) {
 	y -= ySpeed;
-	x += xSpeed - global.gameSpeed;
+	x += xSpeed - oGameController.gameSpeed;
 	sprite_index = sBirdFlying;
 }

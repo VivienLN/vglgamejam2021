@@ -15,7 +15,7 @@
 #macro GAME_OVER_ENABLED true 
 
 // Variables
-global.gameSpeed = GAME_SPEED_BASE;
+gameSpeed = GAME_SPEED_BASE;
 global.isGameOver = false;
 global.isTitle = true;
 
@@ -44,6 +44,3 @@ part_emitter_region(windParticleSystem, windEmitter, room_width, room_width, 0, 
 // Tween timeline system for camera movements
 tlGameSpeed = tweenTimelineCreate();
 tlPlayerX = tweenTimelineCreate();
-// store gamespeed locally to be able to use tweens
-// (workaround the impossibility to access global inside tween script)
-gameSpeed = global.gameSpeed;
