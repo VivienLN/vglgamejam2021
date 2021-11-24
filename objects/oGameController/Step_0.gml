@@ -41,6 +41,16 @@ if(isGameOver) {
 // -----------------------------
 distance += gameSpeed / 32;
 score += ceil(gameSpeed * scoreMultiplier / 100);
+with(oCharacter) {
+	if(isGrinding) {
+		other.comboTimer = 1
+	} else {
+		other.comboTimer -= max(0, COMBO_TIMER_DECREASE_IDLE);
+	}
+}
+if(comboTimer <= 0) {
+	scoreMultiplier = 0;
+}
 
 // -----------------------------
 // Game speed (temporary) alteration

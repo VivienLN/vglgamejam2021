@@ -132,14 +132,21 @@ function activateMapPart(layerBaseName) {
 	var showBirds = (irandom(100) < FX_BIRDS_CHANCE);
 	for(var i = 0; i < array_length_1d(instances); i++) {
 		with(layer_instance_get_instance(instances[i])) {
+			// Map part starts / ends
 			x = originX + mapPartX;
 			y = originY + mapPartY;
 			if(object_index == oMapPartEndMarker) {
 				other.lastPartEndY = y;
 			}
+			
 			// Randomly activate birds for this map part
 			if(object_index == oBird) {
 				visible = showBirds;
+			}
+			
+			// Reset coins			
+			if(object_index == oCoin) {
+				isCollected = false;
 			}
 			
 		}
@@ -150,7 +157,6 @@ function activateMapPart(layerBaseName) {
 }
 
 function deactivateMapPart(layerBaseName) {
-	// show_debug_message("deactivate: " + layerBaseName);
 	var bgLayer = layer_get_id(layerBaseName + "Bg");
 	var mdLayer = layer_get_id(layerBaseName + "Md");
 	var fgLayer = layer_get_id(layerBaseName + "Fg");

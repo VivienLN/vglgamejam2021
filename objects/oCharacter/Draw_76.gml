@@ -1,5 +1,3 @@
-/// @description Insert description here
-// You can write your code in this editor
 if(isGliding) {
 	sprite_index = sCharacterGliding;
 } else if(isBigJump) {

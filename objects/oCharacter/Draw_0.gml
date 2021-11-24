@@ -1,18 +1,17 @@
 var gameSpeed = oGameController.gameSpeed;
+var comboTimer = oGameController.comboTimer;
 if(!oGameController.isGameOver) {
-	// Draw trail
-	var globalAlpha = random_range(-.5, 0);
-	
+	// Draw trail	
 	draw_set_colour($ffff00);
 	gpu_set_blendmode(bm_add);
-	draw_set_alpha(.9 + random_range(-.5, 0));
+	draw_set_alpha(comboTimer + random_range(-.3, 0));
 
 	for(var i = 0; i < ds_list_size(trailPoints) - 1; i++) {
 		var pointX = x - (i * gameSpeed) + trailOffsetX;
 		var pointY = trailPoints[|i] + trailOffsetY;
 		var nextX = x - ((i + 1) * gameSpeed) + trailOffsetX;
 		var nextY = trailPoints[|i + 1] + trailOffsetY;
-		draw_line_width(pointX, pointY, nextX, nextY, 4);
+		draw_line_width(pointX, pointY, nextX, nextY, 6);
 	}
 	
 	// Draw tailwind

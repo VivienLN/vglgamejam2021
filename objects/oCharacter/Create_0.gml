@@ -1,7 +1,3 @@
-/// @description Init character
-// You can write your code in this editor
-show_debug_message("character creation");
-
 // Config
 // Note: ySpeed is a float to be able to have grav as a float to
 grav = 1.2; //0.9;
@@ -51,10 +47,12 @@ tailwindOffset2Y = 15;
 // Particles
 // Define system
 trailParticleSystem = part_system_create();
+comboParticleSystem = part_system_create();
 trailParticle = part_type_create();
 landingParticle = part_type_create();
 grindParticle = part_type_create();
 windParticle = part_type_create();
+comboParticle = part_type_create();
 
 // Define Trail particle
 part_type_shape(trailParticle, pt_shape_square);
@@ -83,7 +81,7 @@ part_type_blend(landingParticle, true);
 // Define Grind particle
 part_type_shape(grindParticle, pt_shape_square);
 part_type_size(grindParticle, .02, .1, -.001, 0);
-part_type_color2(grindParticle, $88ff88, $00ff00);
+part_type_color3(grindParticle, $44ff00, $aaff00, $00ff00);
 part_type_alpha2(grindParticle, 1, .7);
 part_type_speed(grindParticle, 6, 12, 0, 0);
 part_type_direction(grindParticle, 120, 160, 0, 0);
@@ -92,5 +90,18 @@ part_type_orientation(grindParticle, 0, 359, 10, 0, false);
 part_type_life(grindParticle, 60, 120);
 part_type_blend(grindParticle, true);
 
+// Define Combo particle
+part_type_shape(comboParticle, pt_shape_ring);
+part_type_size(comboParticle, .3, .3, +.2, 0);
+part_type_color3(comboParticle, $ffff00, $ffff00, $ffffff);
+part_type_alpha3(comboParticle, .7, .2, 0);
+part_type_speed(comboParticle, 10, 10, 0, 0);
+part_type_direction(comboParticle, 180, 180, 0, 0);
+part_type_gravity(comboParticle, 0, 0);
+part_type_orientation(comboParticle, 0, 0, 0, 0, false);
+part_type_life(comboParticle, 30, 30);
+part_type_blend(comboParticle, true);
+
 // Define emitter
 trailEmitter = part_emitter_create(trailParticleSystem);
+comboEmitter = part_emitter_create(comboParticleSystem);

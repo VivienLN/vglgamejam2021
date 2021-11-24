@@ -9,14 +9,14 @@ grindRecoveryFrames--;
 // Game Over
 // -----------------------------
 if(oGameController.isGameOver) {
-	return;	
+	return;
 }
 
 // -----------------------------
 // Title
 // -----------------------------
 if(oGameController.isTitle) {
-	return;	
+	return;
 }
 
 // -----------------------------
@@ -47,6 +47,7 @@ if(!keyboard_check(KEY_DUCK)) {
 // -----------------------------
 // Grinding collision
 // -----------------------------
+var lastIsGrinding = isGrinding;
 isGrinding = false;
 if(!isOnGround && keyboard_check(KEY_DUCK) && !mustReleaseDuck) {
 	while(place_meeting(x, newY, oMapGrindablesGroup)) {
@@ -54,6 +55,14 @@ if(!isOnGround && keyboard_check(KEY_DUCK) && !mustReleaseDuck) {
 		isGrinding = true;
 		grindRecoveryFrames = maxGrindRecoveryFrames;
 	}
+}
+
+if(!lastIsGrinding && isGrinding) {
+	var pX = x + sprite_width;
+	var pY = y + sprite_height;
+	part_type_speed(comboParticle, oGameController.gameSpeed, oGameController.gameSpeed, 0, 0);
+	part_emitter_region(comboParticleSystem, comboEmitter, pX, pX, pY, pY, ps_shape_ellipse, ps_distr_linear);
+	part_emitter_burst(comboParticleSystem, comboEmitter, comboParticle, 1);
 }
 
 // JustLanded is always false if we were on the ground in the last frame
@@ -157,14 +166,14 @@ if(isGliding) {
 if(hasJustLanded) {
 	cameraStartShake(10, 3, .1);
 	part_emitter_region(trailParticleSystem, trailEmitter, x+22, x+52, y+46, y+76, ps_shape_ellipse, ps_distr_gaussian);
-	part_emitter_burst(trailParticleSystem, trailEmitter, landingParticle, 40);	
+	part_emitter_burst(trailParticleSystem, trailEmitter, landingParticle, 50);	
 } else if(isGrinding) {
-	cameraStartShake(2, 4, 1);
+	cameraStartShake(2, 6, 1);
 	part_emitter_region(trailParticleSystem, trailEmitter, x, x+52, y+66, y+66, ps_shape_line, ps_distr_gaussian);
-	part_emitter_stream(trailParticleSystem, trailEmitter, grindParticle, 5);
+	part_emitter_stream(trailParticleSystem, trailEmitter, grindParticle, 8);
 } else {
 	part_emitter_region(trailParticleSystem, trailEmitter, x, x+52, y+66, y+66, ps_shape_line, ps_distr_gaussian);
-	part_emitter_stream(trailParticleSystem, trailEmitter, trailParticle, isOnGround ? 1 : 0);
+	part_emitter_stream(trailParticleSystem, trailEmitter, trailParticle, isOnGround ? 2 : 0);
 }
 
 

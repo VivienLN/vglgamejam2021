@@ -11,6 +11,9 @@
 #macro CAMERA_DEFAULT view_camera[0]
 #macro CAMERA_BORDER 260
 
+// Score
+#macro COMBO_TIMER_DECREASE_IDLE .016
+
 // Debugging tools
 #macro GAME_OVER_ENABLED true 
 
@@ -23,6 +26,7 @@ isTitle = true;
 score = 0;
 distance = 0;
 scoreMultiplier = 1;
+comboTimer = 0;
 
 // Define Wind particle
 windParticleSystem = part_system_create();
