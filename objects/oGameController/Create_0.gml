@@ -1,6 +1,12 @@
-// Constants
+// Keys
+#macro PAD_JUMP gp_face1
+#macro PAD_AXIS_DUCK gp_axislv
 #macro KEY_JUMP vk_up
 #macro KEY_DUCK vk_down
+#macro PAD_DEAD_ZONE .2
+#macro PAD_DEVICE 0
+
+// other constants
 #macro GAME_SPEED_BASE 14 // px/frame
 #macro GAME_SPEED_INCREASE_THRESHOLD 500
 #macro GAME_SPEED_INCREASE_RATIO 1.05
@@ -16,6 +22,9 @@
 
 // Debugging tools
 #macro GAME_OVER_ENABLED true 
+
+// Game pad dead zone
+gamepad_set_axis_deadzone(PAD_DEVICE, PAD_DEAD_ZONE);
 
 // Variables
 gameSpeed = GAME_SPEED_BASE;
@@ -48,3 +57,13 @@ part_emitter_region(windParticleSystem, windEmitter, room_width, room_width, 0, 
 // Tween timeline system for camera movements
 tlGameSpeed = tweenTimelineCreate();
 tlPlayerX = tweenTimelineCreate();
+
+// Vibration
+padVibrateLeftTimeline = tweenTimelineCreate();
+padVibrateRightTimeline = tweenTimelineCreate();
+padVibrationLeft = 0;
+padVibrationRight = 0;
+function padVibrate(leftFrom, rightFrom, leftTo, rightTo, duration, easing) {
+	tweenAdd(padVibrateLeftTimeline, id, "padVibrationLeft", leftFrom, leftTo, duration, easing, true);
+	tweenAdd(padVibrateRightTimeline, id, "padVibrationRight", rightFrom, rightTo, duration, easing, true);
+}

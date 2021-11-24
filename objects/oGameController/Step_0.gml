@@ -4,7 +4,7 @@
 if(isGameOver) {
 	// Press any key to retry
 	// (except jump/duck keys)
-	if(keyboard_check_released(vk_anykey) && !keyboard_check_released(KEY_JUMP) && !keyboard_check_released(KEY_DUCK)) {
+	if(inputAny() && !inputJumpReleased() && !keyboard_check_released(KEY_DUCK)) {
 		room_restart();
 	}
 	gameSpeed = 0;
@@ -16,7 +16,7 @@ if(isGameOver) {
 if(isTitle) {
 	// Press any key to retry
 	// (except jump/duck keys)
-	if(keyboard_check_released(vk_anykey)) {
+	if(inputAnyReleased()) {
 		isTitle = false;
 		instanceTuto.visible = false;
 		// Music
@@ -110,4 +110,10 @@ if(!tweenTimelineIsRunning(tlGameSpeed)) {
 	}
 }
 
+// -----------------------------
+// Vibration
+// -----------------------------
+tweenStep(padVibrateLeftTimeline);
+tweenStep(padVibrateRightTimeline);
+gamepad_set_vibration(PAD_DEVICE, padVibrationLeft, padVibrationRight);
 

@@ -75,7 +75,8 @@ function tweenAdd(timelineId, targetId, property, from, to, duration, easing, ca
 //-------------------------------------------------------------
 // Run step code for the provided timeline
 //-------------------------------------------------------------
-function tweenStep(timelineId) {	
+function tweenStep(timelineId) {
+	show_debug_message(timelineId);
 	if(ds_list_size(timelineId) == 0) {
 		return;
 	}

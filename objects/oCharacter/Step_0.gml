@@ -37,10 +37,10 @@ while(place_meeting(x, newY, oMapGroundGroup)) {
 // -----------------------------
 // Check keys
 // -----------------------------
-if(!keyboard_check(KEY_JUMP)) {
+if(!inputJump()) {
 	mustReleaseJump = false;
 }
-if(!keyboard_check(KEY_DUCK)) {
+if(!inputDuck()) {
 	mustReleaseDuck = false;
 }
 
@@ -49,7 +49,7 @@ if(!keyboard_check(KEY_DUCK)) {
 // -----------------------------
 var lastIsGrinding = isGrinding;
 isGrinding = false;
-if(!isOnGround && keyboard_check(KEY_DUCK) && !mustReleaseDuck) {
+if(!isOnGround && inputDuck() && !mustReleaseDuck) {
 	while(place_meeting(x, newY, oMapGrindablesGroup)) {
 		newY--;
 		isGrinding = true;
@@ -91,7 +91,7 @@ if(isGliding || isGrinding || isOnGround) {
 // -----------------------------
 // Gliding
 // -----------------------------
-isGliding = canGlide && keyboard_check(KEY_JUMP);
+isGliding = canGlide && inputJump();
 
 // -----------------------------
 // Update position and speed for next frame
@@ -106,7 +106,7 @@ if(isGliding) {
 // -----------------------------
 // Jumping
 // -----------------------------
-if(keyboard_check(KEY_JUMP)) {
+if(inputJump()) {
 	if(canJump) {
 		mustReleaseJump = true;
 		mustReleaseDuck = true;
@@ -126,7 +126,7 @@ if(keyboard_check(KEY_JUMP)) {
 // -----------------------------
 // Ducking
 // -----------------------------
-isDucking = canDuck && keyboard_check(KEY_DUCK);
+isDucking = canDuck && inputDuck();
 
 // -----------------------------
 // Recovery for ducking / grinding and big jump
@@ -165,6 +165,7 @@ if(isGliding) {
 // -----------------------------
 if(hasJustLanded) {
 	cameraStartShake(10, 3, .1);
+	vibrate(.2, .2, 0, 0, 20, easeLinear);
 	part_emitter_region(trailParticleSystem, trailEmitter, x+22, x+52, y+46, y+76, ps_shape_ellipse, ps_distr_gaussian);
 	part_emitter_burst(trailParticleSystem, trailEmitter, landingParticle, 50);	
 } else if(isGrinding) {
