@@ -46,6 +46,7 @@ function inputAnyPressed() {
 // -----------------------------
 // Check for given key / button
 // -----------------------------
+// Jump
 function inputJump() {
 	return keyboard_check(KEY_JUMP) || gamepad_button_check(PAD_DEVICE, PAD_JUMP);
 }
@@ -58,6 +59,20 @@ function inputJumpPressed() {
 	return keyboard_check_pressed(KEY_JUMP) || gamepad_button_check_pressed(PAD_DEVICE, PAD_JUMP);
 }
 
+// Duck
 function inputDuck() {
 	return keyboard_check(KEY_DUCK) || gamepad_axis_value(PAD_DEVICE, gp_axislv) > 0;
+}
+
+// Grind
+function inputGrind() {
+	return keyboard_check(KEY_GRIND) || gamepad_button_check(PAD_DEVICE, PAD_GRIND);
+}
+
+function inputGrindReleased() {
+	return keyboard_check_released(KEY_GRIND) || gamepad_button_check_released(PAD_DEVICE, PAD_GRIND);
+}
+
+function inputGrindPressed() {
+	return keyboard_check_pressed(KEY_GRIND) || gamepad_button_check_pressed(PAD_DEVICE, PAD_GRIND);
 }

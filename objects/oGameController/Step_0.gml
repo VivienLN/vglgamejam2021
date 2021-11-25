@@ -89,9 +89,6 @@ var maxSpeed = 20;
 var r = minR + (maxR - minR) * (gameSpeed - minSpeed) / (maxSpeed - minSpeed);
 part_emitter_stream(windParticleSystem, windEmitter, windParticle, r);
 
-// Tween step
-tweenStep(tlGameSpeed);
-tweenStep(tlPlayerX);
 
 // -----------------------------
 // Speed increase
@@ -111,9 +108,12 @@ if(!tweenTimelineIsRunning(tlGameSpeed)) {
 }
 
 // -----------------------------
+// Tween step
+// -----------------------------
+tweenStep();
+
+// -----------------------------
 // Vibration
 // -----------------------------
-tweenStep(padVibrateLeftTimeline);
-tweenStep(padVibrateRightTimeline);
 gamepad_set_vibration(PAD_DEVICE, padVibrationLeft, padVibrationRight);
 

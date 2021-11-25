@@ -1,13 +1,15 @@
 // Keys
 #macro PAD_JUMP gp_face1
 #macro PAD_AXIS_DUCK gp_axislv
+#macro PAD_GRIND gp_face3
 #macro KEY_JUMP vk_up
 #macro KEY_DUCK vk_down
+#macro KEY_GRIND vk_down
 #macro PAD_DEAD_ZONE .2
 #macro PAD_DEVICE 0
 
 // other constants
-#macro GAME_SPEED_BASE 14 // px/frame
+#macro GAME_SPEED_BASE 16 // px/frame
 #macro GAME_SPEED_INCREASE_THRESHOLD 500
 #macro GAME_SPEED_INCREASE_RATIO 1.05
 #macro FX_BIRDS_CHANCE 10
@@ -41,7 +43,6 @@ comboTimer = 0;
 windParticleSystem = part_system_create();
 windEmitter = part_emitter_create(windParticleSystem);
 windParticle = part_type_create();
-//part_type_shape(windParticle, pt_shape_line);
 part_type_sprite(windParticle, sWindParticle, false, false, true);
 part_type_size(windParticle, .5, 1, 0, 0);
 part_type_color1(windParticle, $ffffff);
@@ -59,11 +60,9 @@ tlGameSpeed = tweenTimelineCreate();
 tlPlayerX = tweenTimelineCreate();
 
 // Vibration
-padVibrateLeftTimeline = tweenTimelineCreate();
-padVibrateRightTimeline = tweenTimelineCreate();
 padVibrationLeft = 0;
 padVibrationRight = 0;
 function padVibrate(leftFrom, rightFrom, leftTo, rightTo, duration, easing) {
-	tweenAdd(padVibrateLeftTimeline, id, "padVibrationLeft", leftFrom, leftTo, duration, easing, true);
-	tweenAdd(padVibrateRightTimeline, id, "padVibrationRight", rightFrom, rightTo, duration, easing, true);
+	tween(id, "padVibrationLeft", leftFrom, leftTo, duration, easing);
+	tween(id, "padVibrationRight", leftFrom, leftTo, duration, easing);
 }

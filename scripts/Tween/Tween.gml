@@ -2,12 +2,17 @@
 	Timeline: a series of tweens, that will play one at a time
 	Tween: a list of variables used to animate something
 */
+global.tweenTimelines = ds_list_create();
 
 //-------------------------------------------------------------
 // Create a new timeline
 //-------------------------------------------------------------
-function tweenTimelineCreate() {
-	timelineId = ds_list_create();
+function tweenTimelineCreate(destroyWhenFinished = false) {
+	var timelineId = ds_map_create();
+	ds_map_add(timelineId, "destroyWhenFinished", destroyWhenFinished);
+	ds_map_add(timelineId, "tweens", ds_list_create());
+	ds_list_add(global.tweenTimelines, timelineId);
+	
 	return timelineId;
 }
 
@@ -17,7 +22,18 @@ function tweenTimelineCreate() {
 // This will remove all tweens and stop animation where it is
 //-------------------------------------------------------------
 function tweenTimelineClear(timelineId) {
-	ds_list_clear(timelineId);
+	ds_list_clear(timelineId[? "tweens"]);
+}
+
+//-------------------------------------------------------------
+// Destroy a timeline
+//-------------------------------------------------------------
+function tweenTimelineDestroy(timelineId) {
+	ds_list_destroy(timelineId[? "tweens"]);
+	ds_map_destroy(timelineId);
+	
+	var index = ds_list_find_index(global.tweenTimelines, timelineId)
+	ds_list_delete(global.tweenTimelines, index);
 }
 
 //-------------------------------------------------------------
@@ -31,7 +47,15 @@ function tweenTimelineIsRunning(timelineId) {
 // Check timeline size
 //-------------------------------------------------------------
 function tweenTimelineSize(timelineId) {
-	return ds_list_size(timelineId);
+	return ds_list_size(timelineId[? "tweens"]);
+}
+
+//-------------------------------------------------------------
+// Create a tween (and add it to a internal timeline)
+//-------------------------------------------------------------
+function tween(targetId, property, from, to, duration, easing) {
+	var timelineId = tweenTimelineCreate()
+	tweenAdd(timelineId, targetId, property, from, to, duration, easing);
 }
 
 //-------------------------------------------------------------
@@ -64,7 +88,7 @@ function tweenAdd(timelineId, targetId, property, from, to, duration, easing, ca
 	ds_map_add(tweenId, "framesTotal", duration);
 	
 	// Add it to timeline
-	ds_list_add(timelineId, tweenId);
+	ds_list_add(timelineId[? "tweens"], tweenId);
 	
 	// Note: Return tweenID useless because we only animate timelines
 	// So we return the timeline ID; this way we can write something like:
@@ -73,34 +97,44 @@ function tweenAdd(timelineId, targetId, property, from, to, duration, easing, ca
 }
 
 //-------------------------------------------------------------
+// Run step code for all timelines
+//-------------------------------------------------------------
+function tweenStep() {
+	for(var i = 0; i < ds_list_size(global.tweenTimelines); i++) {
+		timelineStep(global.tweenTimelines[| i]);
+	}
+}
+
+//-------------------------------------------------------------
 // Run step code for the provided timeline
 //-------------------------------------------------------------
-function tweenStep(timelineId) {
-	show_debug_message(timelineId);
-	if(ds_list_size(timelineId) == 0) {
+function timelineStep(timelineId) {	
+	if(tweenTimelineSize(timelineId) == 0) {
 		return;
 	}
 	
-	if(timelineId[| 0][? "frames"] > timelineId[| 0][? "framesTotal"]) {
+	var tweensList = timelineId[? "tweens"];
+	
+	if(tweensList[| 0][? "frames"] > tweensList[| 0][? "framesTotal"]) {
 		// Current tween is over
 		// Remove it from timeline and shift everything
-		ds_list_delete(timelineId, 0);
+		ds_list_delete(tweensList, 0);
 		
 		// If there is no other tween to play, return
-		if(ds_list_size(timelineId) == 0) {
-			// TODO: timeline is finished, add a callback functionality??
+		if(tweenTimelineSize(timelineId) == 0) {
+			tweenTimelineDestroy(timelineId);
 			return;
 		}
 	}
 	
 	// Here we are sure to have a valid tween reference
-	var frames =  timelineId[| 0][? "frames"];
-	var framesTotal = timelineId[| 0][? "framesTotal"];
-	var from = timelineId[| 0][? "from"];
-	var to = timelineId[| 0][? "to"];
-	var targetId = timelineId[| 0][? "targetId"];
-	var property = timelineId[| 0][? "property"];
-	var easeFunction = timelineId[| 0][? "easing"];
+	var frames =  tweensList[| 0][? "frames"];
+	var framesTotal = tweensList[| 0][? "framesTotal"];
+	var from = tweensList[| 0][? "from"];
+	var to = tweensList[| 0][? "to"];
+	var targetId = tweensList[| 0][? "targetId"];
+	var property = tweensList[| 0][? "property"];
+	var easeFunction = tweensList[| 0][? "easing"];
 	
 	var animationStep = frames / framesTotal;
 	var newValue = from + (to - from) * easeFunction(animationStep);
@@ -110,6 +144,6 @@ function tweenStep(timelineId) {
 	}
 	
 	// Increment frames
-	timelineId[| 0][? "frames"]++;
+	tweensList[| 0][? "frames"]++;
 	
 }

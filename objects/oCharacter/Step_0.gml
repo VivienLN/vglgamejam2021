@@ -49,7 +49,7 @@ if(!inputDuck()) {
 // -----------------------------
 var lastIsGrinding = isGrinding;
 isGrinding = false;
-if(!isOnGround && inputDuck() && !mustReleaseDuck) {
+if(!isOnGround && inputGrind()) {
 	while(place_meeting(x, newY, oMapGrindablesGroup)) {
 		newY--;
 		isGrinding = true;
