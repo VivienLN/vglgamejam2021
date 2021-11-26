@@ -63,14 +63,21 @@ if(!lastIsGrinding && isGrinding) {
 	part_type_speed(comboParticle, oGameController.gameSpeed, oGameController.gameSpeed, 0, 0);
 	part_emitter_region(comboParticleSystem, comboEmitter, pX, pX, pY, pY, ps_shape_ellipse, ps_distr_linear);
 	part_emitter_burst(comboParticleSystem, comboEmitter, comboParticle, 1);
+	
+	// Grind types
+	if(inputDown()) {
+		grindType = grindTypeDown;
+	} else {
+		grindType = grindTypeNeutral;
+	}
 }
-
-// JustLanded is always false if we were on the ground in the last frame
-var hasJustLanded = (!lastIsOnGround && isOnGround);
 
 // -----------------------------
 // Flags
 // -----------------------------
+// JustLanded is always false if we were on the ground in the last frame
+var hasJustLanded = (!lastIsOnGround && isOnGround);
+
 if(isOnGround) {
 	canJump = !mustReleaseJump;
 	canDuck = !mustReleaseDuck;

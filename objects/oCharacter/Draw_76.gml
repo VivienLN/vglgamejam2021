@@ -8,8 +8,10 @@ if(isGliding) {
 	} else {
 		sprite_index = sCharacterJumping;
 	}
-} else if(isDucking || isGrinding) {
+} else if(isDucking) {
 	sprite_index = sCharacterDucking;
+} else if(isGrinding) {
+	sprite_index = grindType[? "animation"];
 } else {
 	sprite_index = sCharacter;
 }

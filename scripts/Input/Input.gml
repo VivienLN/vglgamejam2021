@@ -76,3 +76,20 @@ function inputGrindReleased() {
 function inputGrindPressed() {
 	return keyboard_check_pressed(KEY_GRIND) || gamepad_button_check_pressed(PAD_DEVICE, PAD_GRIND);
 }
+
+// Directions
+function inputDown() {
+	return gamepad_axis_value(PAD_DEVICE, gp_axislv) > 0;
+}
+
+function inputUp() {
+	return gamepad_axis_value(PAD_DEVICE, gp_axislv) < 0;
+}
+
+function inputLeft() {
+	return gamepad_axis_value(PAD_DEVICE, gp_axislh) < 0;
+}
+
+function inputRight() {
+	return gamepad_axis_value(PAD_DEVICE, gp_axislh) > 0;
+}

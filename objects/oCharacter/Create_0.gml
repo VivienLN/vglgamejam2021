@@ -11,8 +11,15 @@ maxGrindRecoveryFrames = 8;
 
 glidingYSpeed = 1.2;
 glidingYSpeedVariation = 1;
-maxJumpFrames = 13; //13;
+maxJumpFrames = 13;
 
+// Tricks
+grindTypeNeutral = ds_map_create();
+grindTypeNeutral[? "name"] = "Back Side";
+grindTypeNeutral[? "animation"] = sCharacterGrindBackSide;
+grindTypeDown = ds_map_create();
+grindTypeDown[? "name"] = "Soul Grind";
+grindTypeDown[? "animation"] = sCharacterGrindSoul;
 
 // Other variables
 isOnGround = false;
@@ -30,6 +37,7 @@ isDucking = false;
 mustReleaseDuck = false;
 
 isGrinding = false;
+grindType = noone;
 
 duckRecoveryFrames = 0;
 grindRecoveryFrames = 0;

@@ -23,7 +23,7 @@
 #macro COMBO_TIMER_DECREASE_IDLE .016
 
 // Debugging tools
-#macro GAME_OVER_ENABLED true 
+#macro GAME_OVER_ENABLED true
 
 // Game pad dead zone
 gamepad_set_axis_deadzone(PAD_DEVICE, PAD_DEAD_ZONE);
