@@ -20,6 +20,9 @@ grindTypeNeutral[? "animation"] = sCharacterGrindBackSide;
 grindTypeDown = ds_map_create();
 grindTypeDown[? "name"] = "Soul Grind";
 grindTypeDown[? "animation"] = sCharacterGrindSoul;
+grindTypeLeft = ds_map_create();
+grindTypeLeft[? "name"] = "Alley Oop Soul Grind";
+grindTypeLeft[? "animation"] = sCharacterGrindAoSoul;
 
 // Other variables
 isOnGround = false;

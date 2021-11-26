@@ -67,9 +67,14 @@ if(!lastIsGrinding && isGrinding) {
 	// Grind types
 	if(inputDown()) {
 		grindType = grindTypeDown;
+	} else if(inputLeft()) {
+		grindType = grindTypeLeft;
 	} else {
 		grindType = grindTypeNeutral;
 	}
+	
+	// Show trick name (debug)
+	show_debug_message(grindType[? "name"]);
 }
 
 // -----------------------------

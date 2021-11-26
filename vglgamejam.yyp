@@ -77,6 +77,7 @@
     {"id":{"name":"oTuto","path":"objects/oTuto/oTuto.yy",},"order":9,},
     {"id":{"name":"sCharacter","path":"sprites/sCharacter/sCharacter.yy",},"order":0,},
     {"id":{"name":"sSlopeUpMiddle","path":"sprites/sSlopeUpMiddle/sSlopeUpMiddle.yy",},"order":29,},
+    {"id":{"name":"sCharacterGrindAoSoul","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"order":53,},
     {"id":{"name":"sCharacterGliding","path":"sprites/sCharacterGliding/sCharacterGliding.yy",},"order":4,},
     {"id":{"name":"sRailDownEnd","path":"sprites/sRailDownEnd/sRailDownEnd.yy",},"order":42,},
     {"id":{"name":"sMapGroundFlat","path":"sprites/sMapGroundFlat/sMapGroundFlat.yy",},"order":35,},
