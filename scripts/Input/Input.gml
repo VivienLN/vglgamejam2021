@@ -11,15 +11,12 @@ function getPadDevice() {
 	}
 	
 	var pads = gamepad_get_device_count();
-	show_debug_message(string(pads) + " pads detected");
 	// Loop throug all pads
 	for (var i = 0; i < pads; i++) {
 	    if (gamepad_is_connected(i)) {
-			show_debug_message("connected: " + string(i));
 			// Loop through all of this pad's buttons
 			for(var j = 0; j < gamepad_button_count(i); j++) {
 				if(gamepad_button_check(i, j)) {
-					show_debug_message("pad #" + string(i) + " detected");
 					padDevice = i;
 					return padDevice;
 				}

@@ -7,8 +7,9 @@ global.tweenTimelines = ds_list_create();
 //-------------------------------------------------------------
 // Create a new timeline
 //-------------------------------------------------------------
-function tweenTimelineCreate(destroyWhenFinished = false) {
+function tweenTimelineCreate(onFinished = noone, destroyWhenFinished = false) {
 	var timelineId = ds_map_create();
+	ds_map_add(timelineId, "onFinished", onFinished);
 	ds_map_add(timelineId, "destroyWhenFinished", destroyWhenFinished);
 	ds_map_add(timelineId, "tweens", ds_list_create());
 	ds_list_add(global.tweenTimelines, timelineId);
@@ -53,8 +54,8 @@ function tweenTimelineSize(timelineId) {
 //-------------------------------------------------------------
 // Create a tween (and add it to a internal timeline)
 //-------------------------------------------------------------
-function tween(targetId, property, from, to, duration, easing) {
-	var timelineId = tweenTimelineCreate(true)
+function tween(targetId, property, from, to, duration, easing, onFinished = noone) {
+	var timelineId = tweenTimelineCreate(onFinished, true)
 	tweenAdd(timelineId, targetId, property, from, to, duration, easing);
 }
 
@@ -122,6 +123,9 @@ function timelineStep(timelineId) {
 		
 		// If there is no other tween to play, return
 		if(tweenTimelineSize(timelineId) == 0) {
+			if(timelineId[? "onFinished"] != noone) {
+				timelineId[? "onFinished"]();
+			}
 			if(timelineId[? "destroyWhenFinished"]) {
 				tweenTimelineDestroy(timelineId);
 			}
