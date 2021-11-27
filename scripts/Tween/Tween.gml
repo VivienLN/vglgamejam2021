@@ -54,7 +54,7 @@ function tweenTimelineSize(timelineId) {
 // Create a tween (and add it to a internal timeline)
 //-------------------------------------------------------------
 function tween(targetId, property, from, to, duration, easing) {
-	var timelineId = tweenTimelineCreate()
+	var timelineId = tweenTimelineCreate(true)
 	tweenAdd(timelineId, targetId, property, from, to, duration, easing);
 }
 
@@ -122,7 +122,9 @@ function timelineStep(timelineId) {
 		
 		// If there is no other tween to play, return
 		if(tweenTimelineSize(timelineId) == 0) {
-			tweenTimelineDestroy(timelineId);
+			if(timelineId[? "destroyWhenFinished"]) {
+				tweenTimelineDestroy(timelineId);
+			}
 			return;
 		}
 	}
