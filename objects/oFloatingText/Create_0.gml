@@ -1,0 +1,2 @@
+text = "";
+textAlpha = 1;

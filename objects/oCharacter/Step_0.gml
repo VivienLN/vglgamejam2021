@@ -75,6 +75,7 @@ if(!lastIsGrinding && isGrinding) {
 	
 	// Show trick name (debug)
 	show_debug_message(grindType[? "name"]);
+	floatingText(grindType[? "name"], x, y, 120);
 }
 
 // -----------------------------

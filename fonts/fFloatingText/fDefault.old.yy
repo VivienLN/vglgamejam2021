@@ -132,7 +132,7 @@
     "path": "folders/Fonts.yy",
   },
   "resourceVersion": "1.0",
-  "name": "fGameOver",
+  "name": "fDefault",
   "tags": [],
   "resourceType": "GMFont",
 }
