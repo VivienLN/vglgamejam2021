@@ -6,7 +6,10 @@
 #macro KEY_DUCK vk_down
 #macro KEY_GRIND vk_down
 #macro PAD_DEAD_ZONE .2
-#macro PAD_DEVICE 0
+#macro KEY_UP vk_up
+#macro KEY_DOWN vk_down
+#macro KEY_LEFT vk_left
+#macro KEY_RIGHT vk_right
 
 // other constants
 #macro GAME_SPEED_BASE 16 // px/frame
@@ -24,9 +27,6 @@
 
 // Debugging tools
 #macro GAME_OVER_ENABLED true
-
-// Game pad dead zone
-gamepad_set_axis_deadzone(PAD_DEVICE, PAD_DEAD_ZONE);
 
 // Variables
 gameSpeed = GAME_SPEED_BASE;

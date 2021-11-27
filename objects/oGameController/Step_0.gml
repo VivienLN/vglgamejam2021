@@ -19,6 +19,8 @@ if(isTitle) {
 	if(inputAnyReleased()) {
 		isTitle = false;
 		instanceTuto.visible = false;
+		// Game pad dead zone
+		gamepad_set_axis_deadzone(getPadDevice(), PAD_DEAD_ZONE);
 		// Music
 		if(!audio_is_playing(sndMusic)) {
 			audio_play_sound(sndMusic, 1, true);
@@ -115,5 +117,5 @@ tweenStep();
 // -----------------------------
 // Vibration
 // -----------------------------
-gamepad_set_vibration(PAD_DEVICE, padVibrationLeft, padVibrationRight);
+gamepad_set_vibration(getPadDevice(), padVibrationLeft, padVibrationRight);
 

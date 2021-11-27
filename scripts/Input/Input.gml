@@ -1,9 +1,114 @@
 // -----------------------------
+// Gamepad detection
+// First pad detected is then used
+// -----------------------------
+// Get or set the gamepad device to use if needed
+function getPadDevice() {
+	static padDevice = noone;
+	// a device has been found and is connected
+	if(padDevice != noone && gamepad_is_connected(padDevice)) {
+		return padDevice;
+	}
+	
+	var pads = gamepad_get_device_count();
+	show_debug_message(string(pads) + " pads detected");
+	// Loop throug all pads
+	for (var i = 0; i < pads; i++) {
+	    if (gamepad_is_connected(i)) {
+			show_debug_message("connected: " + string(i));
+			// Loop through all of this pad's buttons
+			for(var j = 0; j < gamepad_button_count(i); j++) {
+				if(gamepad_button_check(i, j)) {
+					show_debug_message("pad #" + string(i) + " detected");
+					padDevice = i;
+					return padDevice;
+				}
+			}
+	    }
+	}
+	
+	// no pad found
+	return noone;
+}
+
+// -----------------------------
+// Check for a given button in gamepad, and set device if needed
+// -----------------------------
+function inputPad(button) {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	return gamepad_button_check(device, button);
+	
+}
+
+function inputPadPressed(button) {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	return gamepad_button_check_pressed(device, button);
+	
+}
+
+function inputPadReleased(button) {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	return gamepad_button_check_released(device, button);
+}
+
+// Directions
+function inputPadDown() {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	return gamepad_axis_value(device, gp_axislv) > 0;
+}
+
+function inputPadUp() {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	var device = getPadDevice();
+	return gamepad_axis_value(device, gp_axislv) < 0;
+}
+
+function inputPadLeft() {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	var device = getPadDevice();
+	return gamepad_axis_value(device, gp_axislh) < 0;
+}
+
+function inputPadRight() {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	var device = getPadDevice();
+	return gamepad_axis_value(device, gp_axislh) > 0;
+}
+
+// -----------------------------
 // Check for any button in gamepad
 // -----------------------------
+// NB: inputPad(), inputPadReleased() and inputPadPressed() not used here
+// because we need to get the device first, in order to loop through all buttons
 function inputPadAny() {
-	for(var i = 0; i < gamepad_button_count(PAD_DEVICE); i++) {
-		if(gamepad_button_check(PAD_DEVICE, i)) {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	
+	for(var i = 0; i < gamepad_button_count(device); i++) {
+		if(gamepad_button_check(device, i)) {
 			return true;
 		}
 	}
@@ -11,8 +116,12 @@ function inputPadAny() {
 }
 
 function inputPadAnyReleased() {
-	for(var i = 0; i < gamepad_button_count(PAD_DEVICE); i++) {
-		if(gamepad_button_check_released(PAD_DEVICE, i)) {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	for(var i = 0; i < gamepad_button_count(device); i++) {
+		if(gamepad_button_check_released(device, i)) {
 			return true;
 		}
 	}
@@ -20,13 +129,18 @@ function inputPadAnyReleased() {
 }
 
 function inputPadAnyPressed() {
-	for(var i = 0; i < gamepad_button_count(PAD_DEVICE); i++) {
-		if(gamepad_button_check_pressed(PAD_DEVICE, i)) {
+	var device = getPadDevice();
+	if(device == noone) {
+		return false;
+	}
+	for(var i = 0; i < gamepad_button_count(device); i++) {
+		if(gamepad_button_check_pressed(device, i)) {
 			return true;
 		}
 	}
 	return false;
 }
+
 
 // -----------------------------
 // Check for any key / button
@@ -46,50 +160,52 @@ function inputAnyPressed() {
 // -----------------------------
 // Check for given key / button
 // -----------------------------
+// Directions
+function inputDown() {
+	return keyboard_check(KEY_DOWN) || inputPadDown();
+}
+
+function inputUp() {
+	return keyboard_check(KEY_UP) || inputPadUp();
+}
+
+function inputLeft() {
+	return keyboard_check(KEY_LEFT) || inputPadLeft();
+}
+
+function inputRight() {
+	return keyboard_check(KEY_RIGHT) || inputPadRight();
+}
+
 // Jump
-function inputJump() {
-	return keyboard_check(KEY_JUMP) || gamepad_button_check(PAD_DEVICE, PAD_JUMP);
+function inputJump() {	
+	return keyboard_check(KEY_JUMP) || inputPad(PAD_JUMP);
 }
 
 function inputJumpReleased() {
-	return keyboard_check_released(KEY_JUMP) || gamepad_button_check_released(PAD_DEVICE, PAD_JUMP);
+	return keyboard_check_released(KEY_JUMP) || inputPadReleased(PAD_JUMP);
 }
 
 function inputJumpPressed() {
-	return keyboard_check_pressed(KEY_JUMP) || gamepad_button_check_pressed(PAD_DEVICE, PAD_JUMP);
+	return keyboard_check_pressed(KEY_JUMP) || inputPadPressed(PAD_JUMP);
 }
 
 // Duck
 function inputDuck() {
-	return keyboard_check(KEY_DUCK) || gamepad_axis_value(PAD_DEVICE, gp_axislv) > 0;
+	return keyboard_check(KEY_DUCK) || inputPadDown();
 }
 
 // Grind
 function inputGrind() {
-	return keyboard_check(KEY_GRIND) || gamepad_button_check(PAD_DEVICE, PAD_GRIND);
+	return keyboard_check(KEY_GRIND) || inputPad(PAD_GRIND);
 }
 
 function inputGrindReleased() {
-	return keyboard_check_released(KEY_GRIND) || gamepad_button_check_released(PAD_DEVICE, PAD_GRIND);
+	return keyboard_check_released(KEY_GRIND) || inputPadReleased(PAD_GRIND);
 }
 
 function inputGrindPressed() {
-	return keyboard_check_pressed(KEY_GRIND) || gamepad_button_check_pressed(PAD_DEVICE, PAD_GRIND);
+	return keyboard_check_pressed(KEY_GRIND) || inputPadPressed(PAD_GRIND);
 }
 
-// Directions
-function inputDown() {
-	return gamepad_axis_value(PAD_DEVICE, gp_axislv) > 0;
-}
 
-function inputUp() {
-	return gamepad_axis_value(PAD_DEVICE, gp_axislv) < 0;
-}
-
-function inputLeft() {
-	return gamepad_axis_value(PAD_DEVICE, gp_axislh) < 0;
-}
-
-function inputRight() {
-	return gamepad_axis_value(PAD_DEVICE, gp_axislh) > 0;
-}
