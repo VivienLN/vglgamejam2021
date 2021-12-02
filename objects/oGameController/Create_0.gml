@@ -12,7 +12,7 @@
 #macro KEY_RIGHT vk_right
 
 // other constants
-#macro GAME_SPEED_BASE 16 // px/frame
+#macro GAME_SPEED_BASE 10 // px/frame
 #macro GAME_SPEED_INCREASE_THRESHOLD 500
 #macro GAME_SPEED_INCREASE_RATIO 1.05
 #macro FX_BIRDS_CHANCE 10

@@ -23,6 +23,12 @@ grindTypeDown[? "animation"] = sCharacterGrindSoul;
 grindTypeLeft = ds_map_create();
 grindTypeLeft[? "name"] = "Alley Oop Soul Grind";
 grindTypeLeft[? "animation"] = sCharacterGrindAoSoul;
+grindTypeUp = ds_map_create();
+grindTypeUp[? "name"] = "Fast Slide";
+grindTypeUp[? "animation"] = sCharacterGrindFrontFastSlide;
+grindTypeRight = ds_map_create();
+grindTypeRight[? "name"] = "Back Torque + Grab";
+grindTypeRight[? "animation"] = sCharacterGrindBackTorqueGrab;
 
 // Other variables
 isOnGround = false;
@@ -91,7 +97,7 @@ part_type_blend(landingParticle, true);
 
 // Define Grind particle
 part_type_shape(grindParticle, pt_shape_square);
-part_type_size(grindParticle, .02, .1, -.001, 0);
+part_type_size(grindParticle, .01, .08, -.001, 0);
 part_type_color3(grindParticle, $44ff00, $aaff00, $00ff00);
 part_type_alpha2(grindParticle, 1, .7);
 part_type_speed(grindParticle, 6, 12, 0, 0);

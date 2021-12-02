@@ -103,17 +103,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"22dfa4fa-ec99-443b-841f-de013be8b6ce","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"22dfa4fa-ec99-443b-841f-de013be8b6ce","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"LayerId":{"name":"c6df0c53-01d9-4bcd-85f9-7596523ac867","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"22dfa4fa-ec99-443b-841f-de013be8b6ce","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"LayerId":{"name":"e5204b77-c298-404f-b611-a5a29c106075","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sCharacterGrindAoSoul","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","name":"22dfa4fa-ec99-443b-841f-de013be8b6ce","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"8f8eceeb-8f03-4207-b123-cff10cfe1a3c","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"8f8eceeb-8f03-4207-b123-cff10cfe1a3c","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"LayerId":{"name":"c6df0c53-01d9-4bcd-85f9-7596523ac867","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"8f8eceeb-8f03-4207-b123-cff10cfe1a3c","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"LayerId":{"name":"e5204b77-c298-404f-b611-a5a29c106075","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"sCharacterGrindAoSoul","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","name":"8f8eceeb-8f03-4207-b123-cff10cfe1a3c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"0f7785ec-09fb-4129-a6c4-5b3526e994ba","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"0f7785ec-09fb-4129-a6c4-5b3526e994ba","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"LayerId":{"name":"c6df0c53-01d9-4bcd-85f9-7596523ac867","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sCharacterGrindBackTorqueGrab","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"resourceVersion":"1.0","name":"0f7785ec-09fb-4129-a6c4-5b3526e994ba","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"0204a0e4-6d6b-487f-9708-a0c8e9440e2f","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"0204a0e4-6d6b-487f-9708-a0c8e9440e2f","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"LayerId":{"name":"c6df0c53-01d9-4bcd-85f9-7596523ac867","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"sCharacterGrindBackTorqueGrab","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"resourceVersion":"1.0","name":"0204a0e4-6d6b-487f-9708-a0c8e9440e2f","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"sCharacterGrindAoSoul","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},
+    "spriteId": {"name":"sCharacterGrindBackTorqueGrab","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 6.0,
@@ -125,8 +123,8 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"783dcf87-fe11-4e5c-ae76-c97a8eddd990","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"22dfa4fa-ec99-443b-841f-de013be8b6ce","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-            {"id":"b50ff965-22fd-4167-8985-5d1d3306052a","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"8f8eceeb-8f03-4207-b123-cff10cfe1a3c","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"1b11719d-adad-4a49-bf50-02fc3e1e91f2","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0f7785ec-09fb-4129-a6c4-5b3526e994ba","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"bd646fa9-dd1b-47b6-a252-64079c58a0f4","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0204a0e4-6d6b-487f-9708-a0c8e9440e2f","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
@@ -143,15 +141,14 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"sCharacterGrindAoSoul","path":"sprites/sCharacterGrindAoSoul/sCharacterGrindAoSoul.yy",},
+    "parent": {"name":"sCharacterGrindBackTorqueGrab","path":"sprites/sCharacterGrindBackTorqueGrab/sCharacterGrindBackTorqueGrab.yy",},
     "resourceVersion": "1.3",
-    "name": "sCharacterGrindAoSoul",
+    "name": "sCharacterGrindBackTorqueGrab",
     "tags": [],
     "resourceType": "GMSequence",
   },
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"c6df0c53-01d9-4bcd-85f9-7596523ac867","tags":[],"resourceType":"GMImageLayer",},
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1 (2)","resourceVersion":"1.0","name":"e5204b77-c298-404f-b611-a5a29c106075","tags":[],"resourceType":"GMImageLayer",},
   ],
   "nineSlice": {
     "left": 0,
@@ -183,7 +180,7 @@
     "path": "folders/Sprites.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sCharacterGrindAoSoul",
+  "name": "sCharacterGrindBackTorqueGrab",
   "tags": [],
   "resourceType": "GMSprite",
 }

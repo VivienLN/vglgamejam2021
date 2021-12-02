@@ -69,6 +69,10 @@ if(!lastIsGrinding && isGrinding) {
 		grindType = grindTypeDown;
 	} else if(inputLeft()) {
 		grindType = grindTypeLeft;
+	} else if(inputUp()) {
+		grindType = grindTypeUp;
+	} else if(inputRight()) {
+		grindType = grindTypeRight;
 	} else {
 		grindType = grindTypeNeutral;
 	}
@@ -184,7 +188,7 @@ if(hasJustLanded) {
 } else if(isGrinding) {
 	cameraStartShake(2, 6, 1);
 	part_emitter_region(trailParticleSystem, trailEmitter, x, x+52, y+66, y+66, ps_shape_line, ps_distr_gaussian);
-	part_emitter_stream(trailParticleSystem, trailEmitter, grindParticle, 8);
+	part_emitter_stream(trailParticleSystem, trailEmitter, grindParticle, 6);
 } else {
 	part_emitter_region(trailParticleSystem, trailEmitter, x, x+52, y+66, y+66, ps_shape_line, ps_distr_gaussian);
 	part_emitter_stream(trailParticleSystem, trailEmitter, trailParticle, isOnGround ? 2 : 0);
